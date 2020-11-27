@@ -15,7 +15,7 @@ exports.signUp = (req, res) => {
             nascimento: req.body.nascimento,
             cpf: req.body.cpf,
             email: req.body.email,
-            //senha: bcrypt.hashSync(req.body.senha, 8),
+            senha: bcrypt.hashSync(req.body.senha, 8),
             tipo: req.body.tipo
         });
 
@@ -62,6 +62,7 @@ exports.signIn = (req, res) => {
                     nascimento: data.nascimento,
                     cpf: data.cpf,
                     email: data.email,
+                    senha: data.senha,
                     tipo: data.tipo
                 })
             }
@@ -103,7 +104,7 @@ exports.findOne = (req, res) => {
 }
 
 exports.update = (req, res) => {
-    if (!req.body.nome && !req.body.nascimento && !req.body.cpf && !req.body.email) {
+    if (!req.body.nome && !req.body.nascimento && !req.body.cpf && !req.body.email && !req.body.senha) {
         res.status(400).send({
             message: "Conteúdo do corpo da requisição está vazio."
         });
@@ -112,7 +113,8 @@ exports.update = (req, res) => {
             nome: req.body.nome,
             nascimento: req.body.nascimento,
             cpf: req.body.cpf,
-            email: req.body.email
+            email: req.body.email,
+            senha: req.body.senha
         });
 
         usuarioModel.updateById(req.params.idUsuario, usuario, (err, data) => {

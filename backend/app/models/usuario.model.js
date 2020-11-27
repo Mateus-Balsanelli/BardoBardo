@@ -6,7 +6,7 @@ const Usuario = function(usuario) {
     this.nascimento = usuario.nascimento;
     this.cpf = usuario.cpf;
     this.email = usuario.email;
-    //this.senha = usuario.senha;
+    this.senha = usuario.senha;
     this.tipo = usuario.tipo;
 }
 
@@ -66,7 +66,7 @@ Usuario.getAll = (result) => {
 
 //Atualizar usuario através de um ID
 Usuario.updateById = (idUsuario, result) => {
-    sql.query("UPDATE usuarios SET nome = ?, nascimento = ?, cpf = ?, email= ? WHERE idusuarios = ? ", [usuario.nome, usuario.nascimento, usuario.cpf, usuario.email, idUsuario], (err, res) => {
+    sql.query("UPDATE usuarios SET nome = ?, nascimento = ?, cpf = ?, email= ?, senha= ? WHERE idusuarios = ? ", [usuario.nome, usuario.nascimento, usuario.cpf, usuario.email, , usuario.senha, idUsuario], (err, res) => {
         if (err) {
             console.log("erro: ", err);
             result(err, null);
