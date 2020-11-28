@@ -1,15 +1,18 @@
 module.exports = app => {
-    const produtoControllers = require('../controllers/produto.controller.js');
+    const produtoController = require('../controllers/produto.controller.js');
     
-    app.post("/produtos", produtoControllers.create);
+    app.post("/produtos", produtoController.create);
 
-    app.get("/produtos/", produtoControllers.findAll);
+    //app.post("/produtos",[authJwt.verifyToken, authJwt.isAdmin], produtoController.create);
+    //app.get("/produtos/",[authJwt.verifyToken, authJwt.isAdmin], produtoController.findAll);
 
-    app.get("/produtos/:produtoId", produtoControllers.findOne);
+    app.get("/produtos/", produtoController.findAll);
 
-    app.put("/produtos/:produtoId", produtoControllers.update);
+    app.get("/produtos/:produtoId", produtoController.findOne);
 
-    app.delete("/produtos/:produtoId", produtoControllers.delete);
+    app.put("/produtos/:produtoId", produtoController.update);
 
-    app.delete("/produtos", produtoControllers.deleteAll);
+    app.delete("/produtos/:produtoId", produtoController.delete);
+
+    app.delete("/produtos", produtoController.deleteAll);
 }
