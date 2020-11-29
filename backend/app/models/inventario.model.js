@@ -5,7 +5,7 @@ const InventarioModel = function(inventario) {
     this.aquisicao = inventario.aquisicao;
     this.produto_idproduto = inventario.produto_idproduto;
     this.valor = inventario.valor;
-    this.plataforma_idplataforma;
+    this.plataforma_idplataforma = inventario.plataforma_idplataforma;
 }
 
 InventarioModel.create = (inventario,  result) => {

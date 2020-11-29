@@ -1,7 +1,31 @@
 const produtoModel = require("../models/produto.model.js");
 
 exports.create = (req, res) => {
+    if (!req.body.nome && !req.body.valor && !req.body.descricao && !req.body.genero && !req.body.classificacao && !req.body.plataforma && !req.body.lancamento) {
+        res.status(400).send({
+            message: "Conteúdo do corpo da requisição está vazio."
+        });
+    } else {
+        const plataforma = new plataformaModel({
+            nome: req.body.nome,
+            valor: req.body.valor,
+            descricao: req.body.descricao,
+            genero: req.body.genero,
+            classificacao: req.body.classificacao,
+            plataforma: req.body.plataforma,
+            lancamento: req.body.lancamento
+        });
 
+        plataformaModel.create(plataforma, (err, data) => {
+            if (err) {
+                res.status(500).send({
+                    message: err.message || "Ocorreu um erro"
+                });
+            } else {
+                res.send(data);
+            }
+        })
+    }
 };
 
 exports.findAll = (req, res) => {
@@ -34,6 +58,11 @@ exports.findOne = (req, res) => {
 };
 
 exports.update = (req, res) => {
+    if (!req.body.nome && !req.body.valor && !req.body.descricao && !req.body.genero && !req.body.classificacao && !req.body.plataforma && !req.body.lancamento) {
+        res.status(400).send({
+            message: "Conteúdo do corpo da requisição está vazio."
+        });
+    }
     if (err) {
         if (err.kind == "not_found") {
             res.status(404).send({

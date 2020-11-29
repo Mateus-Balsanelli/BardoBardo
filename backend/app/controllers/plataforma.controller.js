@@ -1,16 +1,16 @@
 const plataformaModel = require("../models/plataforma.model.js");
 
 exports.create = (req, res) => {
-    if (!req.body.nome && !req.body.descricao && !req.body.lancamento && !req.body.valor) {
+    if (!req.body.nome && !req.body.valor && !req.body.lancamento && !req.body.descricao) {
         res.status(400).send({
             message: "Conteúdo do corpo da requisição está vazio."
         });
     } else {
         const plataforma = new plataformaModel({
             nome: req.body.nome,
-            descricao: req.body.descricao,
+            valor: req.body.valor,
             lancamento: req.body.lancamento,
-            valor: req.body.valor
+            descricao: req.body.descricao
         });
 
         plataformaModel.create(plataforma, (err, data) => {
