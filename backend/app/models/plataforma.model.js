@@ -3,9 +3,9 @@ const sql = require("./db.js");
 //construtor
 const PlataformaModel = function(plataforma) {
     this.nome = plataforma.nome;
-    this.descricao = plataforma.descricao;
-    this.lancamento = plataforma.lancamento;
     this.valor = plataforma.valor;
+    this.lancamento = plataforma.lancamento;
+    this.descricao = plataforma.descricao;
 }
 
 
@@ -59,7 +59,7 @@ PlataformaModel.getAll = (result) => {
 
 //Atualizar plataforma através de um ID
 PlataformaModel.updateById = (plataformaId, plataforma, result) => {
-    sql.query("UPDATE plataforma SET nome = ?, descricao = ?, lancamento = ?, valor = ? WHERE idplataformas = ? ", [plataforma.nome, plataforma.descricao, plataforma.lancamento, plataforma.valor, plataformaId], (err, res) => {
+    sql.query("UPDATE plataforma SET nome = ?, valor = ?, lancamento = ?, descricao = ? WHERE idplataformas = ? ", [plataforma.nome, plataforma.valor, plataforma.lancamento, plataforma.descricao, plataformaId], (err, res) => {
         if (err) {
             console.log("erro: ", err);
             result(err, null);
