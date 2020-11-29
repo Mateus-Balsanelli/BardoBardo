@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 
 
 exports.signUp = (req, res) => {
-    if (!req.body.nome || !req.body.nascimento || !req.body.cpf || !req.body.email || !req.body.tipo) {
+    if (!req.body.nome && !req.body.nascimento && !req.body.cpf && !req.body.email && !req.body.senha && !req.body.tipo && !req.body.endereco && !req.body.telefone) {
         res.status(400).send({
             message: "Nome, Nascimento, CPF, E-mail ou tipo não enviados"
         })
@@ -15,8 +15,10 @@ exports.signUp = (req, res) => {
             nascimento: req.body.nascimento,
             cpf: req.body.cpf,
             email: req.body.email,
-            //senha: bcrypt.hashSync(req.body.senha, 8),
-            tipo: req.body.tipo
+            senha: req.body.senha,
+            tipo: req.body.tipo,
+            endereco: req.body.endereco,
+            telefone: req.body.telefone
         });
 
         usuarioModel.create(usuario, (err, data) => {
@@ -99,7 +101,7 @@ exports.findOne = (req, res) => {
 }
 
 exports.update = (req, res) => {
-    if (!req.body.nome && !req.body.nascimento && !req.body.cpf && !req.body.email) {
+    if (!req.body.nome && !req.body.nascimento && !req.body.cpf && !req.body.email && !req.body.senha && !req.body.tipo && !req.body.endereco && !req.body.telefone) {
         res.status(400).send({
             message: "Conteúdo do corpo da requisição está vazio."
         });
@@ -108,7 +110,11 @@ exports.update = (req, res) => {
             nome: req.body.nome,
             nascimento: req.body.nascimento,
             cpf: req.body.cpf,
-            email: req.body.email
+            email: req.body.email,
+            senha: req.body.senha,
+            tipo: req.body.tipo,
+            endereco: req.body.endereco,
+            telefone: req.body.telefone
         });
 
         usuarioModel.updateById(req.params.idUsuario, usuario, (err, data) => {
