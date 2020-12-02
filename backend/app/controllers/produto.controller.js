@@ -80,9 +80,25 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-
-};
+    produtoModel.remove(req.params.idProduto, (err, data) => {
+        if (err) {
+            if (err.kind == "not_found") {
+                res.status(404).send({ message: "Usuario não encontrado." })
+            } else {
+                res.status(500).send({ message: "Erro ao deletar usuario." })
+            }
+        } else {
+            res.send({ messsage: "Usuario deletado com sucesso" });
+        }
+    })
+}
 
 exports.deleteAll = (req, res) => {
-
-};
+    produtoModel.remove((err) => {
+        if (err) {
+            res.status(500).send({ message: "Erro ao deletar todos os usuarios." })
+        } else {
+            res.send({ messsage: "Todos os usuarios deletados com sucesso" });
+        }
+    })
+}

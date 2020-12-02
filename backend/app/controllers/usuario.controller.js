@@ -149,7 +149,6 @@ exports.delete = (req, res) => {
             res.send({ messsage: "Usuario deletado com sucesso" });
         }
     })
-
 }
 
 exports.deleteAll = (req, res) => {
