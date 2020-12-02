@@ -1,4 +1,4 @@
-const produtoModel = require("../models/produto.model.js");
+const ProdutoModel = require("../models/produto.model.js");
 
 exports.create = (req, res) => {
     if (!req.body.nome && !req.body.valor && !req.body.descricao && !req.body.genero && !req.body.classificacao && !req.body.plataforma && !req.body.lancamento) {
@@ -29,7 +29,7 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-    produtoModel.getAll((err, data) => {
+    ProdutoModel.getAll((err, data) => {
         if (err){
             res.status(500).send({ 
                 message : err.message || "ocorreu algum erro"
@@ -80,25 +80,25 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-    produtoModel.remove(req.params.idProduto, (err, data) => {
+    ProdutoModel.remove(req.params.idProduto, (err, data) => {
         if (err) {
             if (err.kind == "not_found") {
-                res.status(404).send({ message: "Usuario não encontrado." })
+                res.status(404).send({ message: "Produto não encontrado." })
             } else {
-                res.status(500).send({ message: "Erro ao deletar usuario." })
+                res.status(500).send({ message: "Erro ao deletar produto." })
             }
         } else {
-            res.send({ messsage: "Usuario deletado com sucesso" });
+            res.send({ messsage: "Produto deletado com sucesso" });
         }
     })
 }
 
 exports.deleteAll = (req, res) => {
-    produtoModel.remove((err) => {
+    ProdutoModel.remove((err) => {
         if (err) {
-            res.status(500).send({ message: "Erro ao deletar todos os usuarios." })
+            res.status(500).send({ message: "Erro ao deletar todos os produtos." })
         } else {
-            res.send({ messsage: "Todos os usuarios deletados com sucesso" });
+            res.send({ messsage: "Todos os produtos deletados com sucesso" });
         }
     })
 }

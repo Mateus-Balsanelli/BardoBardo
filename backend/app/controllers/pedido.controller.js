@@ -1,4 +1,4 @@
-const pedidoModel = require("../models/pedido.model.js");
+const PedidoModel = require("../models/pedido.model.js");
 
 exports.create = (req, res) => {
     if (!req.body.produto_idproduto && !req.body.usuario_idusario && !req.body.plataforma_idplataforma && !req.body.dataPedido && !req.body.endereco && !req.body.dataEntrega) {
@@ -6,7 +6,7 @@ exports.create = (req, res) => {
             message: "Conteúdo do corpo da requisição está vazio."
         });
     } else {
-        const pedido = new pedidoModel({
+        const pedido = new PedidoModel({
             produto_idproduto = req.body.produto_idproduto,
             usuario_idususario = req.body.usuario_idusario,
             plataforma_idplataforma = req.body.plataforma_idplataforma, 
@@ -15,7 +15,7 @@ exports.create = (req, res) => {
             dataEntrega = req.body.dataEntrega
         });
 
-        pedidoModel.create(pedido, (err, data) => {
+        PedidoModel.create(pedido, (err, data) => {
             if (err) {
                 res.status(500).send({
                     message: err.message || "Ocorreu um erro"
@@ -28,7 +28,7 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-    pedidoModel.getAll((err, data) => {
+    PedidoModel.getAll((err, data) => {
         if (err){
             res.status(500).send({ 
                 message : err.message || "ocorreu algum erro"
@@ -44,11 +44,11 @@ exports.findOne = (req, res) => {
         if (err) {
             if (err.kind == "not_found") {
                 res.status(404).send({
-                    message: "Produto não encontrado. ID:" + req.params.idPedido 
+                    message: "Pedido não encontrado. ID:" + req.params.idPedido 
                 });
             } else {
                 res.status(500).send({
-                    message: "Erro ao retornar o produto com ID:" + req.params.idPedido
+                    message: "Erro ao retornar o pedido com ID:" + req.params.idPedido
                 });
             }
         } else
@@ -65,11 +65,11 @@ exports.update = (req, res) => {
     if (err) {
         if (err.kind == "not_found") {
             res.status(404).send({
-                message: "Produto não encontrado."
+                message: "Pedido não encontrado."
             });
         } else {
             res.status(500).send({
-                message: "Erro ao atualizar produto."
+                message: "Erro ao atualizar pedido."
             })
         }
     } else {
@@ -78,25 +78,25 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-    pedidoModel.remove(req.params.idPedido, (err, data) => {
+    PedidoModel.remove(req.params.idPedido, (err, data) => {
         if (err) {
             if (err.kind == "not_found") {
-                res.status(404).send({ message: "Usuario não encontrado." })
+                res.status(404).send({ message: "Pedido não encontrado." })
             } else {
-                res.status(500).send({ message: "Erro ao deletar usuario." })
+                res.status(500).send({ message: "Erro ao deletar pedido." })
             }
         } else {
-            res.send({ messsage: "Usuario deletado com sucesso" });
+            res.send({ messsage: "Pedido deletado com sucesso" });
         }
     })
 }
 
 exports.deleteAll = (req, res) => {
-    pedidoModel.remove((err) => {
+    PedidoModel.remove((err) => {
         if (err) {
-            res.status(500).send({ message: "Erro ao deletar todos os usuarios." })
+            res.status(500).send({ message: "Erro ao deletar todos os pedidos." })
         } else {
-            res.send({ messsage: "Todos os usuarios deletados com sucesso" });
+            res.send({ messsage: "Todos os pedidos deletados com sucesso" });
         }
     })
 }

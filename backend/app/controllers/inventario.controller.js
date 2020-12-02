@@ -6,12 +6,13 @@ exports.create = (req, res) => {
             message: "Conteúdo do corpo da requisição está vazio."
         });
     } else {
-        const inventario = new inventarioModel({
+
+        const inventario = new InventarioModel({
             nome = req.body.nome,
             aquisicao = req.body.aquisicao,
             produto_idproduto = req.body.produto_idproduto,
             valor = req.body.valor,
-            plataforma_idplataforma = req.body.plataforma_idplataforma,
+            plataforma_idplataforma = req.body.plataforma_idplataforma
         });
 
         InventarioModel.create(inventario, (err, data) => {
@@ -32,8 +33,9 @@ exports.findAll = (req, res) => {
             res.status(500).send({
                 message: err.message || "Ocorreu algum erro"
             })
-        } else
+        } else {
             res.send(data);
+        }
     });
 }
 
@@ -42,11 +44,11 @@ exports.findOne = (req, res) => {
         if (err) {
             if (err.kind == "not_found") {
                 res.status(404).send({
-                    message: "Plataforma não encontrada. ID:" + req.params.inventarioId
+                    message: "Produto não encontrado. ID:" + req.params.inventarioId
                 });
             } else {
                 res.status(500).send({
-                    message: "Erro ao retornar a plataforma com ID:" + req.params.inventarioId
+                    message: "Erro ao retornar o produto com ID:" + req.params.inventarioId
                 });
             }
         } else
@@ -60,7 +62,7 @@ exports.update = (req, res) => {
             message: "Conteúdo do corpo da requisição está vazio."
         });
     } else {
-        const inventario = new inventarioModel({
+        const inventario = new InventarioModel({
             nome = req.body.nome,
             aquisicao = req.body.aquisicao,
             produto_idproduto = req.body.produto_idproduto,
@@ -72,11 +74,11 @@ exports.update = (req, res) => {
             if (err) {
                 if (err.kind == "not_found") {
                     res.status(404).send({
-                        message: "Plataforma não encontrada."
+                        message: "Produto não encontrada."
                     });
                 } else {
                     res.status(500).send({
-                        message: "Erro ao atualizar plataforma."
+                        message: "Erro ao atualizar produto."
                     })
                 }
             } else {
@@ -90,12 +92,12 @@ exports.delete = (req, res) => {
     InventarioModel.remove(req.params.inventarioId, (err, data) => {
         if (err) {
             if (err.kind == "not_found") {
-                res.status(404).send({ message: "Plataforma não encontrada." })
+                res.status(404).send({ message: "Produto não encontrada." })
             } else {
-                res.status(500).send({ message: "Erro ao deletar plataforma." })
+                res.status(500).send({ message: "Erro ao deletar produto." })
             }
         } else {
-            res.send({ messsage: "Plataforma deletada com sucesso" });
+            res.send({ messsage: "Produto deletada com sucesso" });
         }
     })
 }
@@ -103,9 +105,9 @@ exports.delete = (req, res) => {
 exports.deleteAll = (req, res) => {
     InventarioModel.remove((err) => {
         if (err) {
-            res.status(500).send({ message: "Erro ao deletar todas as inventario." })
+            res.status(500).send({ message: "Erro ao deletar todo o inventario." })
         } else {
-            res.send({ messsage: "Todas as inventario deletadas com sucesso" });
+            res.send({ messsage: "Todo inventario deletado com sucesso" });
         }
     })
 }

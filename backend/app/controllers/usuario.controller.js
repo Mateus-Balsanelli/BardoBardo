@@ -1,5 +1,5 @@
 const bcrypt = require("bcryptjs");
-const usuarioModel = require("../models/usuario.model.js");
+const UsuarioModel = require("../models/usuario.model.js");
 const config = require("../configs/auth.config.js");
 const jwt = require("jsonwebtoken");
 
@@ -10,7 +10,7 @@ exports.signUp = (req, res) => {
             message: "Nome, Nascimento, CPF, E-mail ou tipo não enviados"
         })
     } else {
-        const usuario = new usuarioModel({
+        const usuario = new UsuarioModel({
             nome: req.body.nome,
             nascimento: req.body.nascimento,
             cpf: req.body.cpf,
@@ -21,7 +21,7 @@ exports.signUp = (req, res) => {
             telefone: req.body.telefone
         });
 
-        usuarioModel.create(usuario, (err, data) => {
+        UsuarioModel.create(usuario, (err, data) => {
             if (err) {
                 res.status(500).send({
                     message: err.message || "Ocorreu algum erro"
@@ -34,7 +34,7 @@ exports.signUp = (req, res) => {
 }
 
 exports.signIn = (req, res) => {
-    usuarioModel.findByEmail(req.body.email, (err, data) => {
+    UsuarioModel.findByEmail(req.body.email, (err, data) => {
         if (err) {
             if (err == "not_found") {
                 res.status(404).send({
@@ -67,27 +67,24 @@ exports.signIn = (req, res) => {
                     tipo: data.tipo
                 })
             }
-
-
         }
-
     })
-
 }
 
 exports.findAll = (req, res) => {
-    usuarioModel.getAll((err, data) => {
+    UsuarioModel.getAll((err, data) => {
         if (err) {
             res.status(500).send({
                 message: err.message || "Ocorreu algum erro"
             })
-        } else
+        } else {
             res.send(data);
+        }
     });
 }
 
 exports.findOne = (req, res) => {
-    usuarioModel.findById(req.params.idUsuario, (err, data) => {
+    UsuarioModel.findById(req.params.idUsuario, (err, data) => {
         if (err) {
             if (err.kind == "not_found") {
                 res.status(404).send({
@@ -98,8 +95,9 @@ exports.findOne = (req, res) => {
                     message: "Erro ao retornar o usuario com ID:" + req.params.idUsuario
                 });
             }
-        } else
+        } else{
             res.send(data);
+        }
     })
 
 }
@@ -110,7 +108,7 @@ exports.update = (req, res) => {
             message: "Conteúdo do corpo da requisição está vazio."
         });
     } else {
-        const usuario = new usuarioModel({
+        const usuario = new UsuarioModel({
             nome: req.body.nome,
             nascimento: req.body.nascimento,
             cpf: req.body.cpf,
@@ -119,7 +117,7 @@ exports.update = (req, res) => {
             telefone: req.body.telefone
         });
 
-        usuarioModel.updateById(req.params.idUsuario, usuario, (err, data) => {
+        UsuarioModel.updateById(req.params.idUsuario, usuario, (err, data) => {
             if (err) {
                 if (err.kind == "not_found") {
                     res.status(404).send({
@@ -138,7 +136,7 @@ exports.update = (req, res) => {
 }
 
 exports.delete = (req, res) => {
-    usuarioModel.remove(req.params.idUsuario, (err, data) => {
+    UsuarioModel.remove(req.params.idUsuario, (err, data) => {
         if (err) {
             if (err.kind == "not_found") {
                 res.status(404).send({ message: "Usuario não encontrado." })
@@ -152,7 +150,7 @@ exports.delete = (req, res) => {
 }
 
 exports.deleteAll = (req, res) => {
-    usuarioModel.remove((err) => {
+    UsuarioModel.remove((err) => {
         if (err) {
             res.status(500).send({ message: "Erro ao deletar todos os usuarios." })
         } else {
