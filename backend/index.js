@@ -25,7 +25,12 @@ app.get("/", (req, res) => {
 
 }​)​;
 */
+require("./app/routes/inventario.routes.js")(app);
+require("./app/routes/pedido.routes.js")(app);
+require("./app/routes/plataforma.routes.js")(app);
 require("./app/routes/produto.routes.js")(app);
+require("./app/routes/usuario.routes.js")(app);
+
 
 app.listen(3006, () => {
     console.log("Servidor funcionando")

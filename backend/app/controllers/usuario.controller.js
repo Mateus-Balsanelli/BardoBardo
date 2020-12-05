@@ -3,11 +3,10 @@ const UsuarioModel = require("../models/usuario.model.js");
 const config = require("../configs/auth.config.js");
 const jwt = require("jsonwebtoken");
 
-
 exports.signUp = (req, res) => {
     if (!req.body.nome || !req.body.nascimento ||  !req.body.cpf || !req.body.email || !req.body.tipo || !req.body.endereco || !req.body.telefone ) {
         res.status(400).send({
-            message: "Nome, Nascimento, CPF, E-mail ou tipo não enviados"
+            message: "Nome,  Nascimento, CPF, E-mail ou tipo não enviados"
         })
     } else {
         const usuario = new UsuarioModel({
