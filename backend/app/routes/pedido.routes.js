@@ -10,7 +10,7 @@ module.exports = app => {
 
     //app.get("/pedidoCompleto/:pedidoId", pedidoController.retornaPedidoCompleto);
 
-   // app.get("/pedidoCalculado/:pedidoId", pedidoController.retornaValorCalculado);
+    //app.get("/pedidoCalculado/:pedidoId", pedidoController.retornaValorCalculado);
 
     app.put("/pedido/:pedidoId", pedidoController.update);
 

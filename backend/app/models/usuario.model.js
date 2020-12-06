@@ -14,7 +14,7 @@ const UsuarioModel = function(usuario) {
 
 
 //Cria uma nova plataforma no banco
-UsuarioModel.create = (plataforma, result) => {
+UsuarioModel.create = (usuario, result) => {
     sql.query("INSERT INTO usuario SET ? ", usuario, (err, res) => {
         if (err) {
             console.log("Erro:", err);
@@ -29,8 +29,8 @@ UsuarioModel.create = (plataforma, result) => {
 };
 
 //Selecionar uma plataforma através de um ID
-UsuarioModel.findById = (usuarioId, result) => {
-    sql.query("SELECT * FROM usuario WHERE idusuario = " + usuarioId, (err, res) => {
+UsuarioModel.findById = (idusuario, result) => {
+    sql.query("SELECT * FROM usuario WHERE idusuario = " + idusuario, (err, res) => {
         if (err) {
             console.log("erro: ", err);
             result(null, err);
@@ -55,30 +55,30 @@ UsuarioModel.getAll = (result) => {
             result(null, err);
             return;
         }
-        console.log("Usuarios: ", res);
+        console.log("Usuario: ", res);
         result(null, res);
     })
 }
 
 //Atualizar plataforma através de um ID
-UsuarioModel.updateById = (usuarioId, usuario, result) => {
-    sql.query("UPDATE usuario SET nome = ?, nascimento = ?, cpf = ?, email = ?, senha = ?, tipo = ?, endereco = ?, telefone = ? WHERE idusuario = ? ", [usuario.nome, usuario.nascimento, usuario.cpf, usuario.email, usuario.senha, usuario.tipo, usuario.endereco, usuario.telefone, usuarioId], (err, res) => {
+UsuarioModel.updateById = (idusuario, usuario, result) => {
+    sql.query("UPDATE usuario SET nome = ?, nascimento = ?, cpf = ?, email = ?, senha = ?, tipo = ?, endereco = ?, telefone = ? WHERE idusuario = ? ", [usuario.nome, usuario.nascimento, usuario.cpf, usuario.email, usuario.senha, usuario.tipo, usuario.endereco, usuario.telefone, idusuario], (err, res) => {
         if (err) {
             console.log("erro: ", err);
             result(err, null);
         } else if (res.affectedRows == 0) {
             result({ kind: "not_found" }, null);
         } else {
-            console.log("Usuario atualizado: ", { idusuario: usuarioId, ...usuario });
-            result(null, { idusuario: usuarioId, ...usuario });
+            console.log("Usuario atualizado: ", { idusuario: idusuario, ...usuario });
+            result(null, { idusuario: idusuario, ...usuario });
         }
     })
 }
 
 
 //Remover plataforma através de um ID
-UsuarioModel.remove = (plataformaId, result) => {
-    sql.query("DELETE FROM usuario WHERE idusuario = ?", usuarioId, (err, res) => {
+UsuarioModel.remove = (idusuario, result) => {
+    sql.query("DELETE FROM usuario WHERE idusuario = ?", idusuario, (err, res) => {
         if (err) {
             console.log("erro:", err);
             result(err, null);
@@ -102,5 +102,18 @@ UsuarioModel.removeAll = (result) => {
     })
 }
 
+UsuarioModel.findByEmail = (emailUsuario, result) => {
+    sql.query(`SELECT * FROM usuario WHERE email = '${emailUsuario}'`, (err, res) => {
+        if (err) {
+            result(err, null);
+        }
+        //Verificar se usuário existe
+        else if (res.length) {
+            result(null, res[0]);
+        } else {
+            result({ kind: "not_found" }, null);
+        }
+    })
+}
 
 module.exports = UsuarioModel;

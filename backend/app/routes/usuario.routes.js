@@ -1,6 +1,6 @@
 module.exports = app => {
     const usuarioController = require("../controllers/usuario.controller.js");
-    //const authJwt = require("../middlewares/auth_jwt.middleware.js");
+    const authJwt = require("../middlewares/auth_jwt.middleware.js");
 
     //Criar uma nova conta
     app.post("/signup", usuarioController.signUp);
@@ -9,9 +9,9 @@ module.exports = app => {
         
     //app.post("/usuarios", usuarioController.create);
 
-    //app.post("/usuarios",[authJwt.verifyToken, authJwt.isAdmin], usuarioController.create);
+    app.post("/usuarios",[authJwt.verifyToken, authJwt.isAdmin], usuarioController.create);
     
-    //app.get("/usuarios/",[authJwt.verifyToken, authJwt.isAdmin], usuarioController.findAll);
+    app.get("/usuarios/",[authJwt.verifyToken, authJwt.isAdmin], usuarioController.findAll);
 
     app.get("/usuarios/", usuarioController.findAll);
 
