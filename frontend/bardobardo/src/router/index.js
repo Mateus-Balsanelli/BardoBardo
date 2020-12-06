@@ -97,6 +97,24 @@ const routes = [
     path: '/detailpedido',
     name: 'DetailPedido',
     component: () => import("../views/Pedido/Detail.vue")
+  },
+
+  {
+    path: '/createinventario',
+    name: 'CreateInventario',
+    component: () => import("../views/Inventario/Create.vue")
+  },
+
+  {
+    path: '/listinventario',
+    name: 'ListInventario',
+    component: () => import("../views/Inventario/List.vue")
+  },
+
+  {
+    path: '/detailinventario',
+    name: 'DetailInventario',
+    component: () => import("../views/Inventario/Detail.vue")
   }
 ]
 
