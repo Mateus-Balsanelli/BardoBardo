@@ -2,11 +2,11 @@
   <div class="home">
     <div style="text-align:center;">
       <img alt="Home banner" src="../assets/background-home.jpg" style="top:0;position:absolute;left:0%;width:100%;">
-      <h1 style="z-index:9999;position:absolute;margin-top:-15%;color:#FFF;margin-left:13%;font-size:70px;">Sua Quesline Inicia Aqui</h1>
+      <h1 style="z-index:9999;position:absolute;margin-top:-15%;color:#FFF;margin-left:11%;font-size:70px;">Sua QuestLine Inicia Aqui!</h1>
     </div>
     <div class="content" style="margin-top:40%;">
       <!-- Início da lista de games -->
-      <v-card class="mx-auto my-12" style="background-color: #ffffffcc;">
+      <v-card class="mx-auto my-12" style="background-color: #F5F6FFcc;">
 
         <div class="row" style="padding-right: 2%;">
           <div class="col-md-3" style="padding:6% 0% 0% 2%;">
@@ -154,7 +154,7 @@
       </v-card>
 
 <!-- segunda parte -->
-      <v-card class="mx-auto my-12" style="background-color: #ffffffcc;">
+      <v-card class="mx-auto my-12" style="background-color: #F5F6FFcc;">
         <div class="row" style="padding-right: 2%;">
           <div class="col-md-3" style="padding:6% 0% 0% 2%;">
             <h3 style="color:#12b1ac;padding-bottom:7%;font-size:35px;">Jogos <br>Online</h3>
