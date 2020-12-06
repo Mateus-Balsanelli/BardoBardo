@@ -1,7 +1,8 @@
 <template>
   <div class="games">
-    <img alt="Games banner" src="../assets/banner.png" style="width:100%;">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div>
+      <img alt="Games banner" src="../assets/banner.png" style="top:0;position:absolute;left:0%;width:100%;">
+    </div>
   </div>
 </template>
 

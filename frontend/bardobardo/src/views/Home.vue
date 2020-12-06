@@ -1,36 +1,37 @@
 <template>
   <div class="home">
-    <div>
-      <img alt="Home banner" src="../assets/banner.png" style="top:0;position:absolute;left:0%;width: 100%;">
+    <div style="text-align:center;">
+      <img alt="Home banner" src="../assets/background-home.jpg" style="top:0;position:absolute;left:0%;width:100%;">
+      <h1 style="z-index:9999;position:absolute;margin-top:-15%;color:#FFF;margin-left:13%;font-size:70px;">Sua Quesline Inicia Aqui</h1>
     </div>
-
-    <div class="content" style="margin-top:60%;">
+    <div class="content" style="margin-top:40%;">
       <!-- Início da lista de games -->
-      <v-card :loading="loading" class="mx-auto my-12">
-        <template slot="progress">
-          <v-progress-linear
-            color="deep-purple"
-            height="10"
-            indeterminate
-          ></v-progress-linear>
-        </template>
+      <v-card class="mx-auto my-12" style="background-color: #ffffffcc;">
 
-        <div class="row">
-          <div class="cold-md-3">
-            <h3>Jogos Singleplayer</h3>
+        <div class="row" style="padding-right: 2%;">
+          <div class="col-md-3" style="padding:6% 0% 0% 2%;">
+            <h3 style="color:#12b1ac;padding-bottom:7%;font-size:35px;">Jogos <br>Singleplayer</h3>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod
               tempor incididunt ut. Quis ipsum ultrices gravida. Risus commodo
               viverra maecenas accumsan vel facilisis.
             </p>
-            <a href="games.vue" class="button">
-              <span>Visite a página</span>
+            <a href="Games" class="button" style="background-color:#E96B34;border-radius:25px;padding:5%;text-decoration:none;color:#FFF;text-align:center;margin:auto;display:block;width:160px;">
+              <span>Visite a página</span>  
             </a>
           </div>
 
           <!-- primeiro produto -->
           <div class="col-md-3">
-            <v-img height="250" src="../assets/TheLastOfUs.jpg"></v-img>
+            <v-card :loading="loading" class="mx-auto my-12" style="background-color: #ffffffcc;">
+              <template slot="progress">
+                <v-progress-linear
+                  color="deep-purple"
+                  height="10"
+                  indeterminate
+                ></v-progress-linear>
+              </template>
+            <v-img height="150" src="../assets/TheLastOfUs.jpg"></v-img>
 
             <v-card-title>The Last of Us</v-card-title>
 
@@ -47,7 +48,7 @@
 
             <v-card-text>
               <v-chip-group
-                v-model="selection"
+                v-model="selection1"
                 active-class="deep-purple accent-4 white--text"
                 column
               >
@@ -56,10 +57,24 @@
                 <v-chip style="width: 70px">XBox</v-chip>
               </v-chip-group>
             </v-card-text>
+              <v-card-actions>
+                <v-btn href="" color="deep-purple lighten-2" text @click="reserve">
+                  Adquira Já
+                </v-btn>
+              </v-card-actions>
+            </v-card>
           </div>
           <!-- produto2 -->
           <div class="col-md-3">
-            <v-img height="250" src="../assets/TheLastOfUs.jpg"></v-img>
+            <v-card :loading="loading" class="mx-auto my-12" style="background-color: #ffffffcc;">
+            <template slot="progress">
+              <v-progress-linear
+                color="deep-purple"
+                height="10"
+                indeterminate
+              ></v-progress-linear>
+              </template>
+            <v-img height="150" src="../assets/TheLastOfUs.jpg"></v-img>
 
             <v-card-title>The Last of Us</v-card-title>
 
@@ -76,7 +91,7 @@
 
             <v-card-text>
               <v-chip-group
-                v-model="selection"
+                v-model="selection2"
                 active-class="deep-purple accent-4 white--text"
                 column
               >
@@ -85,10 +100,24 @@
                 <v-chip style="width: 70px">XBox</v-chip>
               </v-chip-group>
             </v-card-text>
+              <v-card-actions>
+                <v-btn href="" color="deep-purple lighten-2" text @click="reserve">
+                  Adquira Já
+                </v-btn>
+              </v-card-actions>
+            </v-card>
           </div>
-          <!-- primeiro produto -->
+          <!-- produto3 -->
           <div class="col-md-3">
-            <v-img height="250" src="../assets/TheLastOfUs.jpg"></v-img>
+            <v-card :loading="loading" class="mx-auto my-12" style="background-color: #ffffffcc;">
+            <template slot="progress">
+              <v-progress-linear
+                color="deep-purple"
+                height="10"
+                indeterminate
+              ></v-progress-linear>
+            </template>
+            <v-img height="150" src="../assets/TheLastOfUs.jpg"></v-img>
 
             <v-card-title>The Last of Us</v-card-title>
 
@@ -105,7 +134,7 @@
 
             <v-card-text>
               <v-chip-group
-                v-model="selection"
+                v-model="selection3"
                 active-class="deep-purple accent-4 white--text"
                 column
               >
@@ -114,14 +143,163 @@
                 <v-chip style="width: 70px">XBox</v-chip>
               </v-chip-group>
             </v-card-text>
+            <v-card-actions>
+              <v-btn href="" color="deep-purple lighten-2" text @click="reserve">
+                Adquira Já
+              </v-btn>
+             </v-card-actions>
+            </v-card>
           </div>
         </div>
-        <v-card-actions>
-          <v-btn color="deep-purple lighten-2" text @click="reserve">
-            Adquira Já
-          </v-btn>
-        </v-card-actions>
       </v-card>
+
+<!-- segunda parte -->
+      <v-card class="mx-auto my-12" style="background-color: #ffffffcc;">
+        <div class="row" style="padding-right: 2%;">
+          <div class="col-md-3" style="padding:6% 0% 0% 2%;">
+            <h3 style="color:#12b1ac;padding-bottom:7%;font-size:35px;">Jogos <br>Online</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod
+              tempor incididunt ut. Quis ipsum ultrices gravida. Risus commodo
+              viverra maecenas accumsan vel facilisis.
+            </p>
+            <a href="games.vue" class="button" style="background-color:#E96B34;border-radius:25px;padding:5%;text-decoration:none;color:#FFF;text-align:center;margin:auto;display:block;width:160px;">
+              <span>Visite a página</span>  
+            </a>
+          </div>
+
+          <!-- primeiro produto -->
+          <div class="col-md-3">
+            <v-card :loading="loading" class="mx-auto my-12" style="background-color: #ffffffcc;">
+              <template slot="progress">
+                <v-progress-linear
+                  color="deep-purple"
+                  height="10"
+                  indeterminate
+                ></v-progress-linear>
+              </template>
+            <v-img height="150" src="../assets/bless-online.jpg"></v-img>
+
+            <v-card-title>Bless Online</v-card-title>
+
+            <v-card-text>
+              <v-row align="center" class="mx-0"> </v-row>
+              <div class="my-4 subtitle-1">Multiplayer</div>
+
+              <div>Ação | RPG</div>
+            </v-card-text>
+
+            <v-divider class="mx-4"></v-divider>
+
+            <v-card-title>R$ 150,00 até 3x</v-card-title>
+
+            <v-card-text>
+              <v-chip-group
+                v-model="selection1"
+                active-class="deep-purple accent-4 white--text"
+                column
+              >
+                <v-chip style="width: 70px">Pc</v-chip>
+                <v-chip style="width: 70px">Ps4</v-chip>
+                <v-chip style="width: 70px">XBox</v-chip>
+              </v-chip-group>
+            </v-card-text>
+              <v-card-actions>
+                <v-btn href="" color="deep-purple lighten-2" text @click="reserve">
+                  Adquira Já
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </div>
+          <!-- produto2 -->
+          <div class="col-md-3">
+            <v-card :loading="loading" class="mx-auto my-12" style="background-color: #ffffffcc;">
+            <template slot="progress">
+              <v-progress-linear
+                color="deep-purple"
+                height="10"
+                indeterminate
+              ></v-progress-linear>
+              </template>
+            <v-img height="150" src="../assets/bless-online.jpg"></v-img>
+
+            <v-card-title>Bless Online</v-card-title>
+
+            <v-card-text>
+              <v-row align="center" class="mx-0"> </v-row>
+              <div class="my-4 subtitle-1">Multiplayer</div>
+
+              <div>Ação | RPG</div>
+            </v-card-text>
+
+            <v-divider class="mx-4"></v-divider>
+
+            <v-card-title>R$ 150,00 até 3x</v-card-title>
+
+            <v-card-text>
+              <v-chip-group
+                v-model="selection2"
+                active-class="deep-purple accent-4 white--text"
+                column
+              >
+                <v-chip style="width: 70px">Pc</v-chip>
+                <v-chip style="width: 70px">Ps4</v-chip>
+                <v-chip style="width: 70px">XBox</v-chip>
+              </v-chip-group>
+            </v-card-text>
+              <v-card-actions>
+                <v-btn href="" color="deep-purple lighten-2" text @click="reserve">
+                  Adquira Já
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </div>
+          <!-- produto3 -->
+          <div class="col-md-3">
+            <v-card :loading="loading" class="mx-auto my-12" style="background-color: #ffffffcc;">
+            <template slot="progress">
+              <v-progress-linear
+                color="deep-purple"
+                height="10"
+                indeterminate
+              ></v-progress-linear>
+            </template>
+            <v-img height="150" src="../assets/bless-online.jpg"></v-img>
+
+            <v-card-title>Bless Online</v-card-title>
+
+            <v-card-text>
+              <v-row align="center" class="mx-0"> </v-row>
+              <div class="my-4 subtitle-1">Singleplayer</div>
+
+              <div>Ação | RPG</div>
+            </v-card-text>
+
+            <v-divider class="mx-4"></v-divider>
+
+            <v-card-title>R$ 150,00 até 3x</v-card-title>
+
+            <v-card-text>
+              <v-chip-group
+                v-model="selection3"
+                active-class="deep-purple accent-4 white--text"
+                column
+              >
+                <v-chip style="width: 70px">Pc</v-chip>
+                <v-chip style="width: 70px">Ps4</v-chip>
+                <v-chip style="width: 70px">XBox</v-chip>
+              </v-chip-group>
+            </v-card-text>
+            <v-card-actions>
+              <v-btn href="" color="deep-purple lighten-2" text @click="reserve">
+                Adquira Já
+              </v-btn>
+             </v-card-actions>
+            </v-card>
+          </div>
+        </div>
+      </v-card>
+
     </div>
   </div>
 </template>

@@ -23,10 +23,10 @@
             background-color="#12b1ac"
           >
             <v-tab :href="`#tab-`">Home</v-tab>
-            <v-tab :href="`#tab-`">Jogos</v-tab>
-            <v-tab :href="`#tab-`">Plataformas</v-tab>
-            <v-tab :href="`#tab-`">Contato</v-tab>
-            <v-tab :href="`#tab-`">Login</v-tab>
+            <v-tab :href="`#tab-Games`">Jogos</v-tab>
+            <v-tab :href="`#tab-Plataformas`">Plataformas</v-tab>
+            <v-tab :href="`#tab-Contato`">Contato</v-tab>
+            <v-tab :href="`#tab-Login`">Login</v-tab>
           </v-tabs>
         </v-spacer>
 
@@ -44,8 +44,10 @@
       </v-container>
     </v-main>
 
-    <v-footer>
-      
+    <v-footer style="background-color:#12b1ac;text-align:center;display:block;">
+      <div>
+        <p style="color:#FFF;padding-top:1%;">© Copyright 2020<br>Carlos - João - Matheus</p>
+      </div>
     </v-footer>
 
   </v-app>
