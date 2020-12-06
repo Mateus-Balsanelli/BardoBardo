@@ -9,18 +9,18 @@ module.exports = app => {
         
     //app.post("/usuarios", usuarioController.create);
 
-    app.post("/usuarios",[authJwt.verifyToken, authJwt.isAdmin], usuarioController.create);
+    app.post("/usuario",[authJwt.verifyToken, authJwt.isAdmin], usuarioController.create);
     
-    app.get("/usuarios/",[authJwt.verifyToken, authJwt.isAdmin], usuarioController.findAll);
+    app.get("/usuario/",[authJwt.verifyToken, authJwt.isAdmin], usuarioController.findAll);
 
-    app.get("/usuarios/", usuarioController.findAll);
+    app.get("/usuario/", usuarioController.findAll);
 
-    app.get("/usuarios/:usuarioId", usuarioController.findOne);
+    app.get("/usuario/:usuarioId", usuarioController.findOne);
 
-    app.put("/usuarios/:usuarioId", usuarioController.update);
+    app.put("/usuario/:usuarioId", usuarioController.update);
 
-    app.delete("/usuarios/:usuarioId", usuarioController.delete);
+    app.delete("/usuario/:usuarioId", usuarioController.delete);
 
-    app.delete("/usuarios", usuarioController.deleteAll);
+    app.delete("/usuario", usuarioController.deleteAll);
 
 }
