@@ -6,13 +6,12 @@ exports.create = (req, res) => {
             message: "Conteúdo do corpo da requisição está vazio."
         });
     } else {
-
         const inventario = new InventarioModel({
-            nome = req.body.nome,
-            aquisicao = req.body.aquisicao,
-            produto_idproduto = req.body.produto_idproduto,
-            valor = req.body.valor,
-            plataforma_idplataforma = req.body.plataforma_idplataforma
+            nome: req.body.nome,
+            aquisicao: req.body.aquisicao,
+            produto_idproduto: req.body.produto_idproduto,
+            valor: req.body.valor,
+            plataforma_idplataforma: req.body.plataforma_idplataforma
         });
 
         InventarioModel.create(inventario, (err, data) => {
@@ -63,11 +62,11 @@ exports.update = (req, res) => {
         });
     } else {
         const inventario = new InventarioModel({
-            nome = req.body.nome,
-            aquisicao = req.body.aquisicao,
-            produto_idproduto = req.body.produto_idproduto,
-            valor = req.body.valor,
-            plataforma_idplataforma = req.body.plataforma_idplataforma,
+            nome: req.body.nome,
+            aquisicao: req.body.aquisicao,
+            produto_idproduto: req.body.produto_idproduto,
+            valor: req.body.valor,
+            plataforma_idplataforma: req.body.plataforma_idplataforma,
         });
 
         InventarioModel.updateById(req.params.inventarioId, inventario, (err, data) => {

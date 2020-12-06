@@ -7,12 +7,12 @@ exports.create = (req, res) => {
         });
     } else {
         const pedido = new PedidoModel({
-            produto_idproduto = req.body.produto_idproduto,
-            usuario_idususario = req.body.usuario_idusario,
-            plataforma_idplataforma = req.body.plataforma_idplataforma, 
-            dataPedido = req.body.dataPedido, 
-            endereco = req.body.endereco, 
-            dataEntrega = req.body.dataEntrega
+            produto_idproduto: req.body.produto_idproduto,
+            usuario_idususario: req.body.usuario_idusario,
+            plataforma_idplataforma: req.body.plataforma_idplataforma, 
+            dataPedido: req.body.dataPedido, 
+            endereco: req.body.endereco, 
+            dataEntrega: req.body.dataEntrega
         });
 
         PedidoModel.create(pedido, (err, data) => {

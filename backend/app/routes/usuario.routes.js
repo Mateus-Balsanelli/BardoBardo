@@ -1,12 +1,13 @@
 module.exports = app => {
     const usuarioController = require("../controllers/usuario.controller.js");
+    const authJwt = require("../middlewares/auth_jwt.middleware.js");
 
     //Criar uma nova conta
     app.post("/signup", usuarioController.signUp);
     //Logar no sistema
     app.post("/signin", usuarioController.signIn);
         
-    app.post("/usuarios", usuarioController.create);
+    //app.post("/usuarios", usuarioController.create);
 
     app.post("/usuarios",[authJwt.verifyToken, authJwt.isAdmin], usuarioController.create);
     
