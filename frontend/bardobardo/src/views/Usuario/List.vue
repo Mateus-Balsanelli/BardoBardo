@@ -2,9 +2,18 @@
     <v-card class="mx-auto">
         <v-card-title>Usuarios</v-card-title>
 
+        <v-text-field
+            v-model="search"
+            append-icon="mdi-magnify"
+            label="Buscar"
+            single-line
+            hide-details
+        ></v-text-field>
+
         <v-data-table
         :headers="cabecalho"
-        :items="usuarios">
+        :items="usuarios"
+        :search="search">
 
         <template v-slot:[`item.acoes`]="{ item }">
             <v-icon small class="mr-2" @click="editarUsuario(item.id)">mdi-pencil</v-icon>

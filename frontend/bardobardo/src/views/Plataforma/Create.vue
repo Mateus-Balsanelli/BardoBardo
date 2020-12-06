@@ -87,7 +87,7 @@ export default {
                 this.msgErro = e;
                 console.log(e);
             })
-        }
+        } 
     }
     
 }

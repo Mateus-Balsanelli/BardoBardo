@@ -7,27 +7,27 @@ class UsuarioService {
     }
 
     getAll() {
-        return http.get("/usuarios");
+        return http.get("/usuario");
     }
 
     get(id) {
-        return http.get(`/usuarios/${id}`);
+        return http.get(`/usuario/${id}`);
     }
 
     create(data) {
-        return http.post("/usuarios", data);
+        return http.post("/usuario", data);
     }
 
     update(id, data) {
-        return http.put(`/usuarios/${id}`, data);
+        return http.put(`/usuario/${id}`, data);
     }
 
     delete(id) {
-        return http.delete(`/usuarios/${id}`);
+        return http.delete(`/usuario/${id}`);
     }
 
     deleteAll() {
-        return http.delete('/usuarios');
+        return http.delete('/usuario');
     }
 }
 

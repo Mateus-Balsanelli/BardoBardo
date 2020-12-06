@@ -2,27 +2,27 @@ import http from "../http-common";
 
 class ProductService {
     getAll() {
-        return http.get("/produtos");
+        return http.get("/produto");
     }
 
     get(id) {
-        return http.get(`/produtos/${id}`);
+        return http.get(`/produto/${id}`);
     }
 
     create(data) {
-        return http.post("/produtos", data);
+        return http.post("/produto", data);
     }
 
     update(id, data) {
-        return http.put(`/produtos/${id}`, data);
+        return http.put(`/produto/${id}`, data);
     }
 
     delete(id) {
-        return http.delete(`/produtos/${id}`);
+        return http.delete(`/produto/${id}`);
     }
 
     deleteAll() {
-        return http.delete('/produtos');
+        return http.delete('/produto');
     }
 }
 

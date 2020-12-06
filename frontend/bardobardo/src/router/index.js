@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -10,6 +11,13 @@ const routes = [
     name: 'Home',
     component: Home
   },
+
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import("../views/Login.vue")
+  },
+
   {
     path: '/about',
     name: 'About',
@@ -71,6 +79,24 @@ const routes = [
     path: '/detailplataform',
     name: 'DetailPlataform',
     component: () => import("../views/Plataforma/Detail.vue")
+  },
+
+  {
+    path: '/createpedido',
+    name: 'CreatePedido',
+    component: () => import("../views/Pedido/Create.vue")
+  },
+
+  {
+    path: '/listpedido',
+    name: 'ListPedido',
+    component: () => import("../views/Pedido/List.vue")
+  },
+
+  {
+    path: '/detailpedido',
+    name: 'DetailPedido',
+    component: () => import("../views/Pedido/Detail.vue")
   }
 ]
 
@@ -79,5 +105,6 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
 
 export default router

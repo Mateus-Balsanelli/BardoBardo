@@ -2,12 +2,22 @@
     <v-card class="mx-auto">
         <v-card-title>Plataformas</v-card-title>
 
+        <v-text-field
+            v-model="search"
+            append-icon="mdi-magnify"
+            label="Buscar"
+            single-line
+            hide-details
+        ></v-text-field>
+
         <v-data-table
         :headers="cabecalho"
-        :items="plataformas">
+        :items="plataformas"
+        :search="search">>
 
         <template v-slot:[`item.acoes`]="{ item }">
             <!--BOTÃO COMPRAR-->
+            <v-icon small class="mr-2" @click="comprarPlataforma(item.id)">cart-minus</v-icon>
             <v-icon small class="mr-2" @click="editarPlataforma(item.id)">mdi-pencil</v-icon>
             <v-icon small @click="deletarPlataforma(item.id)">mdi-delete</v-icon>
         </template>

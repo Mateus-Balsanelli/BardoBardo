@@ -1,10 +1,7 @@
 <template>
   <v-app>
     <!--Menu Lateral-->
-    <v-navigation-drawer app>
-        
-      </v-navigation-drawer>
-      
+
     <v-app-bar
       app
       color="primary"

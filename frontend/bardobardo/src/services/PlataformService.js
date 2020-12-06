@@ -2,27 +2,27 @@ import http from "../http-common";
 
 class PlataformService {
     getAll() {
-        return http.get("/plataformas");
+        return http.get("/plataforma");
     }
 
     get(id) {
-        return http.get(`/plataformas/${id}`);
+        return http.get(`/plataforma/${id}`);
     }
 
     create(data) {
-        return http.post("/plataformas", data);
+        return http.post("/plataforma", data);
     }
 
     update(id, data) {
-        return http.put(`/plataformas/${id}`, data);
+        return http.put(`/plataforma/${id}`, data);
     }
 
     delete(id) {
-        return http.delete(`/plataformas/${id}`);
+        return http.delete(`/plataforma/${id}`);
     }
 
     deleteAll() {
-        return http.delete('/plataformas');
+        return http.delete('/plataforma');
     }
 }
 
