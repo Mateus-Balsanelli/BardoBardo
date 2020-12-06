@@ -2,15 +2,15 @@ module.exports = app => {
     const produtoController = require('../controllers/produto.controller.js');
     const authJwt = require("../middlewares/auth_jwt.middleware.js");
     
-    app.post("/produtos",[authJwt.verifyToken, authJwt.isAdmin], produtoController.create);
+    app.post("/produto",[authJwt.verifyToken, authJwt.isAdmin], produtoController.create);
 
-    app.get("/produtos/",[authJwt.verifyToken, authJwt.isAdmin], produtoController.findAll);
+    app.get("/produto/",[authJwt.verifyToken, authJwt.isAdmin], produtoController.findAll);
 
-    app.get("/produtos/:produtoId", produtoController.findOne);
+    app.get("/produto/:produtoId", produtoController.findOne);
 
-    app.put("/produtos/:produtoId", produtoController.update);
+    app.put("/produto/:produtoId", produtoController.update);
 
-    app.delete("/produtos/:produtoId", produtoController.delete);
+    app.delete("/produto/:produtoId", produtoController.delete);
 
-    app.delete("/produtos", produtoController.deleteAll);
+    app.delete("/produto", produtoController.deleteAll);
 }
