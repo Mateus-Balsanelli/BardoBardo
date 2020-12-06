@@ -16,7 +16,7 @@
               tempor incididunt ut. Quis ipsum ultrices gravida. Risus commodo
               viverra maecenas accumsan vel facilisis.
             </p>
-            <a href="Games" class="button" style="background-color:#E96B34;border-radius:25px;padding:5%;text-decoration:none;color:#FFF;text-align:center;margin:auto;display:block;width:160px;">
+            <a href="Games.vue" class="button" style="background-color:#E96B34;border-radius:25px;padding:5%;text-decoration:none;color:#FFF;text-align:center;margin:auto;display:block;width:160px;">
               <span>Visite a página</span>  
             </a>
           </div>

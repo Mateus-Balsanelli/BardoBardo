@@ -23,7 +23,7 @@
             background-color="#12b1ac"
           >
             <v-tab :href="`#tab-`">Home</v-tab>
-            <v-tab :href="`#tab-Games`">Jogos</v-tab>
+            <v-tab :href="`#tab-Games.vue`">Jogos</v-tab>
             <v-tab :href="`#tab-Plataformas`">Plataformas</v-tab>
             <v-tab :href="`#tab-Contato`">Contato</v-tab>
             <v-tab :href="`#tab-Login`">Login</v-tab>
