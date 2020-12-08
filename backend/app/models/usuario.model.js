@@ -1,155 +1,119 @@
-const bcrypt = require("bcryptjs");
-const usuarioModel = require("../models/usuario.model.js");
-const config = require("../configs/auth.config.js");
-const jwt = require("jsonwebtoken");
+const sql = require("./db.js");
 
-
-exports.signUp = (req, res) => {
-    if (!req.body.nome || !req.body.nascimento || !req.body.cpf || !req.body.email || !req.body.tipo) {
-        res.status(400).send({
-            message: "Nome, Nascimento, CPF, E-mail ou tipo não enviados"
-        })
-    } else {
-        const usuario = new usuarioModel({
-            nome: req.body.nome,
-            nascimento: req.body.nascimento,
-            cpf: req.body.cpf,
-            email: req.body.email,
-            //senha: bcrypt.hashSync(req.body.senha, 8),
-            tipo: req.body.tipo
-        });
-
-        usuarioModel.create(usuario, (err, data) => {
-            if (err) {
-                res.status(500).send({
-                    message: err.message || "Ocorreu algum erro"
-                })
-            } else {
-                res.send(data);
-            }
-        })
-    }
+//construtor
+const UsuarioModel = function(usuario) {
+    this.nome = usuario.nome;
+    this.nascimento = usuario.nascimento;
+    this.cpf =  usuario.cpf;
+    this.email = usuario.email;
+    this.senha = usuario.senha;
+    this.tipo = usuario.tipo;
+    this.endereco = usuario.endereco;
+    this.telefone = usuario.telefone;
 }
 
-exports.signIn = (req, res) => {
-    usuarioModel.findByEmail(req.body.email, (err, data) => {
-        if (err) {
-            if (err == "not_found") {
-                res.status(404).send({
-                    message: "Não foi encontrado usuário com o e-mail digitado."
-                })
-            } else {
-                res.status(500).send({
-                    message: "Ocorreu um erro ao buscar e-mail do usuário no sistema"
-                })
-            }
-        } else {
-            let validPassword = bcrypt.compareSync(req.body.senha, data.senha);
-            if (!validPassword) {
-                res.status(401).send({
-                    accessToken: null,
-                    message: "Senha inválida!"
-                })
-            } else {
-                let token = jwt.sign({ id: data.idusuarios }, config.secret, {
-                    expiresIn: 86400 //24 horas
-                })
 
-                res.status(200).send({
-                    accessToken: token,
-                    id: data.idusuarios,
-                    nome: data.nome,
-                    nascimento: data.nascimento,
-                    cpf: data.cpf,
-                    email: data.email,
-                    tipo: data.tipo
-                })
-            }
+//Cria uma nova plataforma no banco
+UsuarioModel.create = (usuario, result) => {
+    sql.query("INSERT INTO usuario SET ? ", usuario, (err, res) => {
+        if (err) {
+            console.log("Erro:", err);
+            result(err, null);
+            return;
         }
-    })
-}
+        console.log("Usuario criado: ", { idusuario: res.insertId, ...usuario });
+        result(null, { idusuario: res.insertId, ...usuario });
 
-exports.findAll = (req, res) => {
-    usuarioModel.getAll((err, data) => {
-        if (err) {
-            res.status(500).send({
-                message: err.message || "Ocorreu algum erro"
-            })
-        } else
-            res.send(data);
     });
-}
+    //implementar criação de uma nova plataforma no banco
+};
 
-exports.findOne = (req, res) => {
-    usuarioModel.findById(req.params.idUsuario, (err, data) => {
+//Selecionar uma plataforma através de um ID
+UsuarioModel.findById = (idusuario, result) => {
+    sql.query("SELECT * FROM usuario WHERE idusuario = " + idusuario, (err, res) => {
         if (err) {
-            if (err.kind == "not_found") {
-                res.status(404).send({
-                    message: "Usuario não encontrado. ID:" + req.params.idUsuario
-                });
-            } else {
-                res.status(500).send({
-                    message: "Erro ao retornar o usuario com ID:" + req.params.idUsuario
-                });
-            }
-        } else
-            res.send(data);
-    })
+            console.log("erro: ", err);
+            result(null, err);
+            return;
+        }
 
-}
-
-exports.update = (req, res) => {
-    if (!req.body.nome && !req.body.nascimento && !req.body.cpf && !req.body.email) {
-        res.status(400).send({
-            message: "Conteúdo do corpo da requisição está vazio."
-        });
-    } else {
-        const usuario = new usuarioModel({
-            nome: req.body.nome,
-            nascimento: req.body.nascimento,
-            cpf: req.body.cpf,
-            email: req.body.email
-        });
-
-        usuarioModel.updateById(req.params.idUsuario, usuario, (err, data) => {
-            if (err) {
-                if (err.kind == "not_found") {
-                    res.status(404).send({
-                        message: "Usuario não encontrado."
-                    });
-                } else {
-                    res.status(500).send({
-                        message: "Erro ao atualizar usuario."
-                    })
-                }
-            } else {
-                res.send(data);
-            }
-        })
-    }
-}
-
-exports.delete = (req, res) => {
-    usuarioModel.remove(req.params.idUsuario, (err, data) => {
-        if (err) {
-            if (err.kind == "not_found") {
-                res.status(404).send({ message: "Usuario não encontrado." })
-            } else {
-                res.status(500).send({ message: "Erro ao deletar usuario." })
-            }
+        if (res.length) {
+            console.log("Usuario encontrada: ", res[0]);
+            result(null, res[0]);
+            return;
         } else {
-            res.send({ messsage: "Usuario deletado com sucesso" });
+            result({ kind: "not_found" }, null)
         }
     })
+};
 
+//Selecionar todas as plataformas
+UsuarioModel.getAll = (result) => {
+    sql.query("SELECT * FROM usuario", (err, res) => {
+        if (err) {
+            console.log("erro: ", err);
+            result(null, err);
+            return;
+        }
+        console.log("Usuario: ", res);
+        result(null, res);
+    })
 }
 
-exports.deleteAll = (req, res) => {
-    usuarioModel.remove((err) => {
+//Atualizar plataforma através de um ID
+UsuarioModel.updateById = (idusuario, usuario, result) => {
+    sql.query("UPDATE usuario SET nome = ?, nascimento = ?, cpf = ?, email = ?, senha = ?, tipo = ?, endereco = ?, telefone = ? WHERE idusuario = ? ", [usuario.nome, usuario.nascimento, usuario.cpf, usuario.email, usuario.senha, usuario.tipo, usuario.endereco, usuario.telefone, idusuario], (err, res) => {
         if (err) {
-            res.status(500).send({ message: "Erro ao deletar todos os usuarios." })
+            console.log("erro: ", err);
+            result(err, null);
+        } else if (res.affectedRows == 0) {
+            result({ kind: "not_found" }, null);
         } else {
-            res.send({ messsage: "Todos os usuarios deletados com sucesso" });
+            console.log("Usuario atualizado: ", { idusuario: idusuario, ...usuario });
+            result(null, { idusuario: idusuario, ...usuario });
         }
     })
 }
+
+
+//Remover plataforma através de um ID
+UsuarioModel.remove = (idusuario, result) => {
+    sql.query("DELETE FROM usuario WHERE idusuario = ?", idusuario, (err, res) => {
+        if (err) {
+            console.log("erro:", err);
+            result(err, null);
+        } else if (res.affectedRows == 0) {
+            result({ kind: "not_found" }, null);
+        } else {
+            result(null, res);
+        }
+    })
+}
+
+//Remover todas as plataformas
+UsuarioModel.removeAll = (result) => {
+    sql.query("DELETE FROM usuario", (err, res) => {
+        if (err) {
+            console.log("erro:", err);
+            result(err);
+        } else {
+            result(null);
+        }
+    })
+}
+
+UsuarioModel.findByEmail = (emailUsuario, result) => {
+    sql.query(`SELECT * FROM usuario WHERE email = '${emailUsuario}'`, (err, res) => {
+        if (err) {
+            result(err, null);
+        }
+        //Verificar se usuário existe
+        else if (res.length) {
+            result(null, res[0]);
+        } else {
+            result({ kind: "not_found" }, null);
+        }
+    })
+}
+
+module.exports = UsuarioModel;

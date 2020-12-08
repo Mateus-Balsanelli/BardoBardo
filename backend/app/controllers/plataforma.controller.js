@@ -1,19 +1,19 @@
-const plataformaModel = require("../models/plataforma.model.js");
+const PlataformaModel = require("../models/plataforma.model.js");
 
 exports.create = (req, res) => {
-    if (!req.body.nome && !req.body.descricao && !req.body.lancamento && !req.body.valor) {
+    if (!req.body.nome && !req.body.valor && !req.body.lancamento && !req.body.descricao) {
         res.status(400).send({
             message: "Conteúdo do corpo da requisição está vazio."
         });
     } else {
-        const plataforma = new plataformaModel({
+        const plataforma = new PlataformaModel({
             nome: req.body.nome,
-            descricao: req.body.descricao,
+            valor: req.body.valor,
             lancamento: req.body.lancamento,
-            valor: req.body.valor
+            descricao: req.body.descricao
         });
 
-        plataformaModel.create(plataforma, (err, data) => {
+        PlataformaModel.create(plataforma, (err, data) => {
             if (err) {
                 res.status(500).send({
                     message: err.message || "Ocorreu um erro"
@@ -23,11 +23,10 @@ exports.create = (req, res) => {
             }
         })
     }
-
 }
 
 exports.findAll = (req, res) => {
-    plataformaModel.getAll((err, data) => {
+    PlataformaModel.getAll((err, data) => {
         if (err) {
             res.status(500).send({
                 message: err.message || "Ocorreu algum erro"
@@ -38,7 +37,7 @@ exports.findAll = (req, res) => {
 }
 
 exports.findOne = (req, res) => {
-    plataformaModel.findById(req.params.plataformaId, (err, data) => {
+    PlataformaModel.findById(req.params.plataformaId, (err, data) => {
         if (err) {
             if (err.kind == "not_found") {
                 res.status(404).send({
@@ -61,14 +60,14 @@ exports.update = (req, res) => {
             message: "Conteúdo do corpo da requisição está vazio."
         });
     } else {
-        const plataforma = new plataformaModel({
+        const plataforma = new PlataformaModel({
             nome: req.body.nome,
             descricao: req.body.descricao,
             lancamento: req.body.lancamento,
             valor: req.body.valor
         });
 
-        plataformaModel.updateById(req.params.plataformaId, plataforma, (err, data) => {
+        PlataformaModel.updateById(req.params.plataformaId, plataforma, (err, data) => {
             if (err) {
                 if (err.kind == "not_found") {
                     res.status(404).send({
@@ -87,7 +86,7 @@ exports.update = (req, res) => {
 }
 
 exports.delete = (req, res) => {
-    plataformaModel.remove(req.params.plataformaId, (err, data) => {
+    PlataformaModel.remove(req.params.plataformaId, (err, data) => {
         if (err) {
             if (err.kind == "not_found") {
                 res.status(404).send({ message: "Plataforma não encontrada." })
@@ -102,11 +101,11 @@ exports.delete = (req, res) => {
 }
 
 exports.deleteAll = (req, res) => {
-    plataformaModel.remove((err) => {
+    PlataformaModel.remove((err) => {
         if (err) {
             res.status(500).send({ message: "Erro ao deletar todas as plataformas." })
         } else {
-            res.send({ messsage: "Todas as plataformas deletadas com sucesso" });
+            res.send({ messsage: "Todas as plataformas foram deletadas com sucesso" });
         }
     })
 }

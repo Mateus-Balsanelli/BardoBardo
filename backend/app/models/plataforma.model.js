@@ -3,15 +3,15 @@ const sql = require("./db.js");
 //construtor
 const PlataformaModel = function(plataforma) {
     this.nome = plataforma.nome;
-    this.descricao = plataforma.descricao;
-    this.lancamento = plataforma.lancamento;
     this.valor = plataforma.valor;
+    this.lancamento = plataforma.lancamento;
+    this.descricao = plataforma.descricao;
 }
 
 
 //Cria uma nova plataforma no banco
 PlataformaModel.create = (plataforma, result) => {
-    sql.query("INSERT INTO plataformas SET ? ", plataforma, (err, res) => {
+    sql.query("INSERT INTO plataforma SET ? ", plataforma, (err, res) => {
         if (err) {
             console.log("Erro:", err);
             result(err, null);
@@ -26,7 +26,7 @@ PlataformaModel.create = (plataforma, result) => {
 
 //Selecionar uma plataforma através de um ID
 PlataformaModel.findById = (plataformaId, result) => {
-    sql.query("SELECT * FROM plataformas WHERE idplataformas = " + plataformaId, (err, res) => {
+    sql.query("SELECT * FROM plataforma WHERE idplataforma = " + plataformaId, (err, res) => {
         if (err) {
             console.log("erro: ", err);
             result(null, err);
@@ -46,7 +46,7 @@ PlataformaModel.findById = (plataformaId, result) => {
 
 //Selecionar todas as plataformas
 PlataformaModel.getAll = (result) => {
-    sql.query("SELECT * FROM plataformas", (err, res) => {
+    sql.query("SELECT * FROM plataforma", (err, res) => {
         if (err) {
             console.log("erro: ", err);
             result(null, err);
@@ -59,7 +59,7 @@ PlataformaModel.getAll = (result) => {
 
 //Atualizar plataforma através de um ID
 PlataformaModel.updateById = (plataformaId, plataforma, result) => {
-    sql.query("UPDATE plataformas SET nome = ?, descricao = ?, lancamento = ?, valor = ? WHERE idplataformas = ? ", [plataforma.nome, plataforma.descricao, plataforma.lancamento, plataforma.valor, plataformaId], (err, res) => {
+    sql.query("UPDATE plataforma SET nome = ?, valor = ?, lancamento = ?, descricao = ? WHERE idplataformas = ? ", [plataforma.nome, plataforma.valor, plataforma.lancamento, plataforma.descricao, plataformaId], (err, res) => {
         if (err) {
             console.log("erro: ", err);
             result(err, null);
@@ -75,7 +75,7 @@ PlataformaModel.updateById = (plataformaId, plataforma, result) => {
 
 //Remover plataforma através de um ID
 PlataformaModel.remove = (plataformaId, result) => {
-    sql.query("DELETE FROM plataformas WHERE idplataformas = ?", plataformaId, (err, res) => {
+    sql.query("DELETE FROM plataforma WHERE idplataforma = ?", plataformaId, (err, res) => {
         if (err) {
             console.log("erro:", err);
             result(err, null);
@@ -89,7 +89,7 @@ PlataformaModel.remove = (plataformaId, result) => {
 
 //Remover todas as plataformas
 PlataformaModel.removeAll = (result) => {
-    sql.query("DELETE FROM plataformas", (err, res) => {
+    sql.query("DELETE FROM plataforma", (err, res) => {
         if (err) {
             console.log("erro:", err);
             result(err);
