@@ -3,7 +3,6 @@
     <!-- 
     <v-navigation-drawer app>
     </v-navigation-drawer>
-    -->
     <v-card>
       <v-toolbar
         color="#12b1ac"
@@ -32,14 +31,14 @@
         <v-btn icon>
           <v-icon>mdi-dots-vertical</v-icon>
         </v-btn>
-
       </v-toolbar>
   </v-card>
 
     <v-main>
       <v-container>
+        <router-view>
+        </router-view>
         <router-view></router-view>
-
       </v-container>
     </v-main>
 
