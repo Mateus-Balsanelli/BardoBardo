@@ -6,7 +6,7 @@
     </div>
     <div class="content" style="margin-top:40%;">
       <!-- Início da lista de games -->
-      <v-card class="mx-auto my-12" style="background-color: #F5F6FFcc;">
+      <v-card class="mx-auto my-12" style="background-color: #F5F6FFcc;z-index:9999;">
 
         <div class="row" style="padding-right: 2%;">
           <div class="col-md-3" style="padding:6% 0% 0% 2%;">

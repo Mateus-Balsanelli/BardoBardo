@@ -20,11 +20,16 @@
             slider-color="#black"
             background-color="#12b1ac"
           >
-            <v-tab :href="`#tab-`">Home</v-tab>
-            <v-tab :href="`#tab-Games.vue`">Jogos</v-tab>
-            <v-tab :href="`#tab-Plataformas`">Plataformas</v-tab>
-            <v-tab :href="`#tab-Contato`">Contato</v-tab>
-            <v-tab :href="`#tab-Login`">Login</v-tab>
+            <v-tab :href="`/`">Home</v-tab>
+            <v-tab :href="`/createproduct`">Cadastrar Jogos</v-tab>
+            <v-tab :href="`/listproduct`">Listar Jogos</v-tab>
+            <v-tab :href="`/createplataform`">Cadastrar Plataforma</v-tab>
+            <v-tab :href="`/listplataform`">Listar Plataforma</v-tab>
+            <v-tab :href="`/createuser`">Cadastrar usuário</v-tab>
+            <v-tab :href="`/listuser`">Listar usuário</v-tab>
+            <v-tab :href="`/listpedido`">Pedidos</v-tab>
+            <v-tab :href="`/createinventario`">Cadastrar inventário</v-tab>
+            <v-tab :href="`/listinventario`">Inventário</v-tab>
           </v-tabs>
         </v-spacer>
 
