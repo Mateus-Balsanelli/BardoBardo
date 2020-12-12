@@ -15,7 +15,6 @@
            
         <v-spacer>
 
-          
           <v-tabs
             v-model="model"
             right
@@ -25,9 +24,9 @@
             <v-tab :href="`/`">Home</v-tab>
             <v-tab :href="`/listproduct`">Jogos</v-tab>
             <v-tab :href="`/listplataform`">Plataforma</v-tab>
-            <v-tab :href="`/login`">Login</v-tab>
             <v-tab :href="`/listpedido`">Pedidos</v-tab>
             <v-tab :href="`/listinventario`">Inventário</v-tab>
+            <v-tab :href="`/login`">Login</v-tab>
           </v-tabs>
         </v-spacer>
 
