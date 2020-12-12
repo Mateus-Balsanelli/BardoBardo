@@ -16,6 +16,7 @@
               Escolha seu gênero favorito e divirta-se nas histórias envolventes e frenéticas que estas grandes empresas desenvolveram em pró da sua satisfação.
             </p>
             <a href="/listproduct" class="button" style="background-color:#E96B34;border-radius:25px;padding:5%;text-decoration:none;color:#FFF;text-align:center;margin:auto;display:block;width:160px;">
+
               <span>Visite a página</span>  
             </a>
           </div>
@@ -43,8 +44,8 @@
 
             <v-divider class="mx-4"></v-divider>
 
-            <v-card-title>R$ 70,00 à Vista </v-card-title>
 
+            <v-card-title>R$ 70,00 à Vista </v-card-title>
             <v-card-text>
               <v-chip-group
                 v-model="selection1"
@@ -72,7 +73,6 @@
                 height="10"
                 indeterminate
               ></v-progress-linear>
-              </template>
             <v-img height="150" src="../assets/cyberpunk.jpg"></v-img>
 
             <v-card-title>CyberPunk 2077</v-card-title>
@@ -82,6 +82,7 @@
               <div class="my-4 subtitle-1">Singleplayer</div>
 
               <div>RPG | ação | Mundo aberto</div>
+              
             </v-card-text>
 
             <v-divider class="mx-4"></v-divider>
@@ -125,6 +126,7 @@
               <div class="my-4 subtitle-1">Singleplayer</div>
 
               <div>ação | aventura | Puzzle</div>
+
             </v-card-text>
 
             <v-divider class="mx-4"></v-divider>
@@ -144,6 +146,7 @@
             </v-card-text>
             <v-card-actions>
               <v-btn href="/listproduct" color="deep-purple lighten-2" text @click="reserve">
+
                 Adquira Já
               </v-btn>
              </v-card-actions>
@@ -154,6 +157,7 @@
 
 <!-- segunda parte -->
       <v-card class="mx-auto my-12" style="background-color: #F5F6FFcc;">
+
         <div class="row" style="padding:0% 2% 0% 2%;">
           <div class="col-md-3" style="padding:6% 0% 0% 2%;">
             <h3 style="color:#12b1ac;padding-bottom:7%;font-size:35px;">Jogos <br>Online</h3>
@@ -185,6 +189,7 @@
               <div class="my-4 subtitle-1">Multiplayer</div>
 
               <div>Ação | MMO-RPG</div>
+
             </v-card-text>
 
             <v-divider class="mx-4"></v-divider>
@@ -204,6 +209,7 @@
             </v-card-text>
               <v-card-actions>
                 <v-btn href="/listproduct" color="deep-purple lighten-2" text @click="reserve">
+
                   Adquira Já
                 </v-btn>
               </v-card-actions>
@@ -228,12 +234,14 @@
               <div class="my-4 subtitle-1">Multiplayer</div>
 
               <div>Shooter em 1ª Pessoa</div>
+
             </v-card-text>
 
             <v-divider class="mx-4"></v-divider>
 
-            <v-card-title>R$ 99,00 até 2x</v-card-title>
 
+            <v-card-title>R$ 99,00 até 2x</v-card-title>
+            
             <v-card-text>
               <v-chip-group
                 v-model="selection2"
@@ -247,6 +255,7 @@
             </v-card-text>
               <v-card-actions>
                 <v-btn href="/listproduct" color="deep-purple lighten-2" text @click="reserve">
+
                   Adquira Já
                 </v-btn>
               </v-card-actions>
@@ -262,14 +271,16 @@
                 indeterminate
               ></v-progress-linear>
             </template>
+
             <v-img height="150" src="../assets/fallGuys.jpg"></v-img>
 
             <v-card-title>Fall Guys</v-card-title>
 
+
             <v-card-text>
               <v-row align="center" class="mx-0"> </v-row>
               <div class="my-4 subtitle-1">Singleplayer</div>
-
+              
               <div>Competitivo | MMO | Gincana</div>
             </v-card-text>
 
@@ -283,6 +294,7 @@
                 active-class="deep-purple accent-4 white--text"
                 column
               >
+
                 <v-chip style="width: 68px">Pc</v-chip>
                 <v-chip style="width: 68px">Ps4</v-chip>
                 <v-chip style="width: 68px">XBox</v-chip>
@@ -290,6 +302,7 @@
             </v-card-text>
             <v-card-actions>
               <v-btn href="/listproduct" color="deep-purple lighten-2" text @click="reserve">
+
                 Adquira Já
               </v-btn>
              </v-card-actions>
