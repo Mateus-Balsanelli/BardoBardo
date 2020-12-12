@@ -22,6 +22,23 @@
         
         </v-data-table>
 
+        <v-card>
+            <v-toolbar
+                color="#12b1ac"
+                dark
+                flat
+            >                
+                <v-tabs
+                    v-model="model"
+                    right
+                    slider-color="#black"
+                    background-color="#12b1ac"
+                >
+                    <v-tab :href="`/createinventario`"> Cadastrar Inventário</v-tab>
+                </v-tabs>
+
+            </v-toolbar>
+        </v-card>
     </v-card>
 </template>
 

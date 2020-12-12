@@ -14,39 +14,8 @@
         <v-toolbar-title>Bar Do Bardo</v-toolbar-title>
            
         <v-spacer>
-          <template>
-            <v-row justify="space-around">
-              <v-menu
-                v-for="([text, rounded], index) in btns"
-                :key="text"
-                :rounded="rounded"
-                offset-y
-              >
-                <template v-slot:activator="{ attrs, on }">
-                  <v-btn
-                    :color="colors[index]"
-                    class="white--text ma-5"
-                    v-bind="attrs"
-                    v-on="on"
-                  >
-                    {{ text }}
-                  </v-btn>
-                </template>
 
-                <v-list>
-                  <v-list-item
-                    v-for="item in items"
-                    :key="item"
-                    link
-                  >
-                    <v-list-item-title v-text="item"></v-list-item-title>
-                  </v-list-item>
-                </v-list>
-              </v-menu>
-            </v-row>
-          </template>
-
-          <!-- 
+          
           <v-tabs
             v-model="model"
             right
@@ -54,16 +23,12 @@
             background-color="#12b1ac"
           >
             <v-tab :href="`/`">Home</v-tab>
-            <v-tab :href="`/createproduct`">Cadastrar Jogos</v-tab>
-            <v-tab :href="`/listproduct`">Listar Jogos</v-tab>
-            <v-tab :href="`/createplataform`">Cadastrar Plataforma</v-tab>
-            <v-tab :href="`/listplataform`">Listar Plataforma</v-tab>
-            <v-tab :href="`/createuser`">Cadastrar usuário</v-tab>
-            <v-tab :href="`/listuser`">Listar usuário</v-tab>
+            <v-tab :href="`/listproduct`">Jogos</v-tab>
+            <v-tab :href="`/listplataform`">Plataforma</v-tab>
+            <v-tab :href="`/login`">Login</v-tab>
             <v-tab :href="`/listpedido`">Pedidos</v-tab>
-            <v-tab :href="`/createinventario`">Cadastrar inventário</v-tab>
             <v-tab :href="`/listinventario`">Inventário</v-tab>
-          </v-tabs>-->
+          </v-tabs>
         </v-spacer>
 
         <v-btn icon>
@@ -97,21 +62,4 @@ export default {
     //
   }),
 };
-</script>
-<script>
-  export default {
-    data: () => ({
-      btns: [
-        ['Home', 'lg'],
-        ['Usuário', 'lg'],
-        ['Jogos', 'lg'],
-        ['Plataforma', 'lg'],
-        ['Pedidos', 'lg'],
-        ['Inventário', 'lg'],
-      ],
-      colors: ['teal darken-1','teal darken-1','teal darken-1','teal darken-1','teal darken-1','teal darken-1'],
-      items: ['Listar Jogos','Cadastrar Jogos','Listar Usuários','Cadastrar Usuário','Listar Plataformas','Cadastrar Plataformas'],
-      link: ['/createproduct']
-    }),
-  }
 </script>
