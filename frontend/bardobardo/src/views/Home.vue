@@ -12,9 +12,8 @@
           <div class="col-md-3" style="padding:6% 0% 0% 2%;">
             <h3 style="color:#12b1ac;padding-bottom:7%;font-size:35px;">Jogos <br>Singleplayer</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod
-              tempor incididunt ut. Quis ipsum ultrices gravida. Risus commodo
-              viverra maecenas accumsan vel facilisis.
+              Se adventure em mundos incríveis em uma experiência Singleplayer imperdível. <br>
+              Escolha seu gênero favorito e divirta-se nas histórias envolventes e frenéticas que estas grandes empresas desenvolveram em pró da sua satisfação.
             </p>
             <a href="/listproduct" class="button" style="background-color:#E96B34;border-radius:25px;padding:5%;text-decoration:none;color:#FFF;text-align:center;margin:auto;display:block;width:160px;">
               <span>Visite a página</span>  
@@ -159,9 +158,8 @@
           <div class="col-md-3" style="padding:6% 0% 0% 2%;">
             <h3 style="color:#12b1ac;padding-bottom:7%;font-size:35px;">Jogos <br>Online</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod
-              tempor incididunt ut. Quis ipsum ultrices gravida. Risus commodo
-              viverra maecenas accumsan vel facilisis.
+              Jogue junto com seus amigos ou outros jogadores random, participe de batalhas únicas do gênero de seu maior gosto.<br>
+              Faça sua trilha em grandes MMO's RPG estilo action e torne-se o número 1 de seu servidor.
             </p>
             <a href="/listproduct" class="button" style="background-color:#E96B34;border-radius:25px;padding:5%;text-decoration:none;color:#FFF;text-align:center;margin:auto;display:block;width:160px;">
               <span>Visite a página</span>  
