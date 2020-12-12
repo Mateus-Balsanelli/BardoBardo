@@ -8,7 +8,7 @@
       <!-- Início da lista de games -->
       <v-card class="mx-auto my-12" style="background-color: #F5F6FFcc;z-index:9999;">
 
-        <div class="row" style="padding-right: 2%;">
+        <div class="row" style="padding:0% 2% 0% 2%;">
           <div class="col-md-3" style="padding:6% 0% 0% 2%;">
             <h3 style="color:#12b1ac;padding-bottom:7%;font-size:35px;">Jogos <br>Singleplayer</h3>
             <p>
@@ -52,9 +52,9 @@
                 active-class="deep-purple accent-4 white--text"
                 column
               >
-                <v-chip style="width: 70px">Pc</v-chip>
-                <v-chip style="width: 70px">Ps4</v-chip>
-                <v-chip style="width: 70px">XBox</v-chip>
+                <v-chip style="width: 68px">Pc</v-chip>
+                <v-chip style="width: 68px">Ps4</v-chip>
+                <v-chip style="width: 68px">XBox</v-chip>
               </v-chip-group>
             </v-card-text>
               <v-card-actions>
@@ -95,9 +95,9 @@
                 active-class="deep-purple accent-4 white--text"
                 column
               >
-                <v-chip style="width: 70px">Pc</v-chip>
-                <v-chip style="width: 70px">Ps4</v-chip>
-                <v-chip style="width: 70px">XBox</v-chip>
+                <v-chip style="width: 68px">Pc</v-chip>
+                <v-chip style="width: 68px">Ps4</v-chip>
+                <v-chip style="width: 68px">XBox</v-chip>
               </v-chip-group>
             </v-card-text>
               <v-card-actions>
@@ -138,9 +138,9 @@
                 active-class="deep-purple accent-4 white--text"
                 column
               >
-                <v-chip style="width: 70px">Pc</v-chip>
-                <v-chip style="width: 70px">Ps4</v-chip>
-                <v-chip style="width: 70px">XBox</v-chip>
+                <v-chip style="width: 68px">Pc</v-chip>
+                <v-chip style="width: 68px">Ps4</v-chip>
+                <v-chip style="width: 68px">XBox</v-chip>
               </v-chip-group>
             </v-card-text>
             <v-card-actions>
@@ -155,7 +155,7 @@
 
 <!-- segunda parte -->
       <v-card class="mx-auto my-12" style="background-color: #F5F6FFcc;">
-        <div class="row" style="padding-right: 2%;">
+        <div class="row" style="padding:0% 2% 0% 2%;">
           <div class="col-md-3" style="padding:6% 0% 0% 2%;">
             <h3 style="color:#12b1ac;padding-bottom:7%;font-size:35px;">Jogos <br>Online</h3>
             <p>
@@ -199,9 +199,9 @@
                 active-class="deep-purple accent-4 white--text"
                 column
               >
-                <v-chip style="width: 70px">Pc</v-chip>
-                <v-chip style="width: 70px">Ps4</v-chip>
-                <v-chip style="width: 70px">XBox</v-chip>
+                <v-chip style="width: 68px">Pc</v-chip>
+                <v-chip style="width: 68px">Ps4</v-chip>
+                <v-chip style="width: 68px">XBox</v-chip>
               </v-chip-group>
             </v-card-text>
               <v-card-actions>
@@ -242,9 +242,9 @@
                 active-class="deep-purple accent-4 white--text"
                 column
               >
-                <v-chip style="width: 70px">Pc</v-chip>
-                <v-chip style="width: 70px">Ps4</v-chip>
-                <v-chip style="width: 70px">XBox</v-chip>
+                <v-chip style="width: 68px">Pc</v-chip>
+                <v-chip style="width: 68px">Ps4</v-chip>
+                <v-chip style="width: 68px">XBox</v-chip>
               </v-chip-group>
             </v-card-text>
               <v-card-actions>
@@ -285,9 +285,9 @@
                 active-class="deep-purple accent-4 white--text"
                 column
               >
-                <v-chip style="width: 70px">Pc</v-chip>
-                <v-chip style="width: 70px">Ps4</v-chip>
-                <v-chip style="width: 70px">XBox</v-chip>
+                <v-chip style="width: 68px">Pc</v-chip>
+                <v-chip style="width: 68px">Ps4</v-chip>
+                <v-chip style="width: 68px">XBox</v-chip>
               </v-chip-group>
             </v-card-text>
             <v-card-actions>
@@ -322,5 +322,21 @@ export default {
       setTimeout(() => (this.loading = false), 2000);
     },
   },
+};
+</script>
+
+<script>
+
+
+export default {
+  name: 'App',
+
+  components: {
+    
+  },
+
+  data: () => ({
+    //
+  }),
 };
 </script>
