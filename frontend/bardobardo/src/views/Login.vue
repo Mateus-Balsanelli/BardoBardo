@@ -32,6 +32,24 @@
         {{msgErro}}
         </v-alert>
       </v-card>
+      <v-card>
+            <v-toolbar
+                color="#12b1ac"
+                dark
+                flat
+            >                
+                <v-tabs
+                    v-model="model"
+                    right
+                    slider-color="#black"
+                    background-color="#12b1ac"
+                >
+                    <v-tab :href="`/listuser`">Listar usuários</v-tab>
+                    <v-tab :href="`/createuser`"> Cadastrar usuários</v-tab>
+                </v-tabs>
+
+            </v-toolbar>
+        </v-card>
     </v-flex>
   </v-layout>
 </template>
