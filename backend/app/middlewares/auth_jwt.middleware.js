@@ -1,9 +1,9 @@
 const jwt = require("jsonwebtoken");
 const config = require("../configs/auth.config.js");
-const usuarioModel = require("../models/usuario.model.js");
+const UsuarioModel = require("../models/usuario.model.js");
 
 verifyToken = (req, res, next) => {
-    let token = req.headers["bardobardo-access-token"];
+    let token = req.headers["x-access-token"];
 
     if (!token) {
         return res.status(403).send({
@@ -16,7 +16,7 @@ verifyToken = (req, res, next) => {
                     message: "Não autorizado!"
                 });
             } else {
-                req.usuarioId = decoded.id;
+                req.idusuario = decoded.id;
                 next();
             }
         })
@@ -24,7 +24,7 @@ verifyToken = (req, res, next) => {
 }
 
 isAdmin = (req, res, next) => {
-    usuarioModel.findById(req.usuarioId, (err, data) => {
+    UsuarioModel.findById(req.idusuario, (err, data) => {
         if (data.tipo == 1) {
             next();
         } else {
@@ -36,7 +36,7 @@ isAdmin = (req, res, next) => {
 }
 
 isCliente = (req, res, next) => {
-    usuarioModel.findById(req.usuarioId, (err, data) => {
+    UsuarioModel.findById(req.idusuario, (err, data) => {
         if (data.tipo == 2) {
             next();
         } else {

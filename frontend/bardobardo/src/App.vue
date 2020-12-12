@@ -1,10 +1,9 @@
 <template>
   <v-app>
-    <!-- 
+    <!--
     <v-navigation-drawer app>
+    </v-navigation-drawer>-->
 
-    </v-navigation-drawer>
-    -->
     <v-card>
       <v-toolbar
         color="#12b1ac"
@@ -13,34 +12,34 @@
       >
         <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
-        <v-toolbar-title>BarDo Bardo</v-toolbar-title>
-
+        <v-toolbar-title>Bar Do Bardo</v-toolbar-title>
+           
         <v-spacer>
+
           <v-tabs
             v-model="model"
             right
             slider-color="#black"
             background-color="#12b1ac"
           >
-            <v-tab :href="`#tab-`">Home</v-tab>
-            <v-tab :href="`#tab-Games.vue`">Jogos</v-tab>
-            <v-tab :href="`#tab-Plataformas`">Plataformas</v-tab>
-            <v-tab :href="`#tab-Contato`">Contato</v-tab>
-            <v-tab :href="`#tab-Login`">Login</v-tab>
+            <v-tab :href="`/`">Home</v-tab>
+            <v-tab :href="`/listproduct`">Jogos</v-tab>
+            <v-tab :href="`/listplataform`">Plataforma</v-tab>
+            <v-tab :href="`/listpedido`">Pedidos</v-tab>
+            <v-tab :href="`/listinventario`">Inventário</v-tab>
+            <v-tab :href="`/login`">Login</v-tab>
           </v-tabs>
         </v-spacer>
 
         <v-btn icon>
           <v-icon>mdi-dots-vertical</v-icon>
         </v-btn>
-
       </v-toolbar>
   </v-card>
 
     <v-main>
       <v-container>
         <router-view></router-view>
-
       </v-container>
     </v-main>
 
@@ -54,14 +53,13 @@
 </template>
 
 <script>
-
 export default {
   name: 'App',
-
   components: {
     
   },
-
+  data: () => ({
+    //
+  }),
 };
-
 </script>

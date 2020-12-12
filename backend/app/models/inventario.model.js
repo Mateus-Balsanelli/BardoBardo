@@ -15,7 +15,7 @@ InventarioModel.create = (inventario,  result) => {
             result(err, null);
             return;
         }
-        console.log("Produto criada: ", { idinventario: res.insertId, ...inventario });
+        console.log("Produto criado: ", { idinventario: res.insertId, ...inventario });
         result(null, { idinventario: res.insertId, ...inventario });
 
     });
@@ -39,7 +39,7 @@ InventarioModel.findById = (inventarioId, result) => {
 };
 
 InventarioModel.getAll = (result) => {
-    sql.query("SELECT * FROM produto", (err, res)=> {
+    sql.query("SELECT * FROM inventario", (err, res)=> {
         if(err){
             console.log("erro:", err);
             result(null, err);
@@ -87,3 +87,5 @@ InventarioModel.removeAll = (result) => {
         }
     })
 };
+
+module.exports = InventarioModel;
