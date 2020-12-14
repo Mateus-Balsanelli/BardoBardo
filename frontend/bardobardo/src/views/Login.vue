@@ -54,5 +54,33 @@
   </v-layout>
 </template>
 <script>
-
+import AuthService from '../services/AuthService.js';
+export default {
+    data(){
+        return {
+            email:"",
+            senha:"",
+            msgErro: "",
+            formValido: ""
+        }
+    },
+    methods: {
+        login(){
+            this.msgErro = "";
+            let dadosUsuario = {
+                email: this.email,
+                senha: this.senha
+            }
+            AuthService.signIn(dadosUsuario)
+            .then(response => { 
+                AuthService.setUserData(response.data);
+                this.$router.push({name:"ListProducts"});
+            })
+            .catch(e => {
+                this.msgErro = e;
+                console.log(e);
+            })
+        }
+    }
+}
 </script>

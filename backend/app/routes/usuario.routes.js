@@ -13,14 +13,12 @@ module.exports = app => {
     
     app.get("/usuario/",[authJwt.verifyToken, authJwt.isAdmin], usuarioController.findAll);
 
-    app.get("/usuario/", usuarioController.findAll);
+    app.get("/usuario/:usuarioId",[authJwt.verifyToken], usuarioController.findOne);
 
-    app.get("/usuario/:usuarioId", usuarioController.findOne);
+    app.put("/usuario/:usuarioId",[authJwt.verifyToken], usuarioController.update);
 
-    app.put("/usuario/:usuarioId", usuarioController.update);
+    app.delete("/usuario/:usuarioId",[authJwt.verifyToken], usuarioController.delete);
 
-    app.delete("/usuario/:usuarioId", usuarioController.delete);
-
-    app.delete("/usuario", usuarioController.deleteAll);
+    app.delete("/usuario",[authJwt.verifyToken, authJwt.isAdmin], usuarioController.deleteAll);
 
 }

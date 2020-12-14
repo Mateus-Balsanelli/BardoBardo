@@ -13,14 +13,18 @@
         <v-data-table
         :headers="cabecalho"
         :items="plataformas"
-        :search="search">>
+        :single-select="singleSelect"
+        item-key="nome"
+        show-select
+        class="elevation-1">>
 
-        <template v-slot:[`item.acoes`]="{ item }">
-            <!--BOTÃO COMPRAR-->
-            <v-icon small class="mr-2" @click="comprarPlataforma(item.id)">cart-minus</v-icon>
-            <v-icon small class="mr-2" @click="editarPlataforma(item.id)">mdi-pencil</v-icon>
-            <v-icon small @click="deletarPlataforma(item.id)">mdi-delete</v-icon>
-        </template>
+        <template v-slot:top>
+            <v-switch
+            v-model="singleSelect"
+            label="Single select"
+            class="pa-3"
+        ></v-switch>
+    </template>
         
         </v-data-table>
 
@@ -31,7 +35,7 @@
                 flat
             >                
                 <v-tabs
-                    v-model="model"
+                    v-model="selected"
                     right
                     slider-color="#black"
                     background-color="#12b1ac"

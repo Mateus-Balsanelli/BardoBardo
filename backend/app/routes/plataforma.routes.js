@@ -4,13 +4,13 @@ module.exports = app => {
 
     app.post("/plataforma", [authJwt.verifyToken, authJwt.isAdmin], plataformaController.create);
 
-    app.get("/plataforma", [authJwt.verifyToken, authJwt.isAdmin], plataformaController.findAll);
+    app.get("/plataforma", [authJwt.verifyToken], plataformaController.findAll);
 
-    app.get("/plataforma/:plataformaId", plataformaController.findOne);
+    app.get("/plataforma/:plataformaId", [authJwt.verifyToken], plataformaController.findOne);
 
-    app.put("/plataforma/:plataformaId", plataformaController.update);
+    app.put("/plataforma/:plataformaId", [authJwt.verifyToken, authJwt.isAdmin], plataformaController.update);
 
-    app.delete("/plataforma/:plataformaId", plataformaController.delete);
+    app.delete("/plataforma/:plataformaId", [authJwt.verifyToken, authJwt.isAdmin], plataformaController.delete);
 
-    app.delete("/plataforma", plataformaController.deleteAll);
+    app.delete("/plataforma", [authJwt.verifyToken, authJwt.isAdmin], plataformaController.deleteAll);
 }

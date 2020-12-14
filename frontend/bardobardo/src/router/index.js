@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import AuthService from '../services/AuthService.js'
 
 
 Vue.use(VueRouter)
@@ -124,5 +125,34 @@ const router = new VueRouter({
   routes
 })
 
+router.beforeEach((to, from, next) => {
+  if (to.name != 'Login' && !AuthService.isSignedIn()) {
+      next({ name: 'Login' });
+  } else {
+
+      if (to.name == "CreateProduct" && !AuthService.isAdmin()) {
+          next({ name: 'Home' });
+      } else
+      if (to.name == "CreatePlataform" && !AuthService.isAdmin()) {
+        next({ name: 'Home' });
+      } else
+      if (to.name == "CreateInventario" && !AuthService.isAdmin()) {
+      next({ name: 'Home' });
+      } else
+      if (to.name == "ListInventario" && !AuthService.isAdmin()) {
+        next({ name: 'Home' });
+      } else
+      if (to.name == "DetailProduct" && !AuthService.isAdmin()) {
+        next({ name: 'Home' });
+      } else
+      if (to.name == "DetailPlataform" && !AuthService.isAdmin()) {
+        next({ name: 'Home' });
+      } else
+      if (to.name == "DetailInventario" && !AuthService.isAdmin()) {
+        next({ name: 'Home' });
+      } else
+          next();
+  }
+})
 
 export default router

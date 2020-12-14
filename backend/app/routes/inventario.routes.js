@@ -7,13 +7,13 @@ module.exports = app => {
     
     app.get("/inventario/",[authJwt.verifyToken, authJwt.isAdmin], inventarioController.findAll);
 
-    app.get("/inventario/:inventarioId", inventarioController.findOne);
+    app.get("/inventario/:inventarioId",[authJwt.verifyToken, authJwt.isAdmin], inventarioController.findOne);
 
-    app.put("/inventario/:inventarioId", inventarioController.update);
+    app.put("/inventario/:inventarioId",[authJwt.verifyToken, authJwt.isAdmin], inventarioController.update);
 
-    app.delete("/inventario/:inventarioId",inventarioController.delete);
+    app.delete("/inventario/:inventarioId",[authJwt.verifyToken, authJwt.isAdmin],inventarioController.delete);
 
-    app.delete("/inventario", inventarioController.deleteAll);
+    app.delete("/inventario",[authJwt.verifyToken, authJwt.isAdmin], inventarioController.deleteAll);
 }
 
 
