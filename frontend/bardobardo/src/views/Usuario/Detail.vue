@@ -64,6 +64,24 @@
         >
         </v-select>
 
+        <v-text-field
+          label="Endereo"
+          v-model="endereco"
+          :rules="regrasEndereco"
+          required
+          error-count="2"
+        >
+        </v-text-field>
+
+        <v-text-field
+          label="Telefone"
+          v-model="telefone"
+          :rules="regrasTelefone"
+          required
+          error-count="2"
+        >
+        </v-text-field>
+
         <v-divider class="my-5"></v-divider>
 
         <v-btn color="error" small class="mr-2" @click="deletarUsuario">
@@ -102,6 +120,8 @@ export default {
       email: "",
       senha: "",
       tipo: "",
+      endereco: "",
+      telefone: "",
       formValido: "",
       msgSucesso: "",
       msgErro: "",
@@ -128,7 +148,12 @@ export default {
         (v) =>
           (v && v.length >= 8) || "Senha precisa ter ao menos 8 caracteres",
       ],
-      regrasTipo: [(v) => !!v || "Tipo de usuário precisa ser preenchido"],
+      regrasTipo: [(v) => !!v || "Tipo de usuário precisa ser preenchido",
+      ],
+      regrasEndereco: [(v) => !!v || "Endereço do usuário precisa ser preenchido"
+      ],
+      regrasTelefone: [(v) => !!v || "Telefone do usuário precisa ser preenchido"
+      ],
     };
   },
     mounted(){

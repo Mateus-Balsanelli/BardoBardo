@@ -38,6 +38,8 @@ export default {
                 { text:"Email", sortable: true, value: "email"},
                 { text:"Senha", sortable: true, value: "senha"},
                 { text:"Tipo", sortable: true, value: "tipo"},
+                { text:"Endereço", sortable: true, value: "endereco"},
+                { text:"Telefone", sortable: true, value: "telefone"},
                 { text:"Ações", value: "acoes", sortable:false }
             ]
         }
@@ -62,7 +64,9 @@ export default {
                 cpf: usuario.cpf,
                 email: usuario.email,
                 senha: usuario.senha,
-                tipo: usuario.tipo
+                tipo: usuario.tipo,
+                endereco: usuario.endereco,
+                telefone: usuario.telefone
             }
         },
         deletarUsuario(id){

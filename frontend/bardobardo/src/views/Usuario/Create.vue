@@ -64,6 +64,24 @@
         >
         </v-select>
 
+        <v-text-field
+          label="Endereo"
+          v-model="endereco"
+          :rules="regrasEndereco"
+          required
+          error-count="2"
+        >
+        </v-text-field>
+
+        <v-text-field
+          label="Telefone"
+          v-model="telefone"
+          :rules="regrasTelefone"
+          required
+          error-count="2"
+        >
+        </v-text-field>
+
         <v-btn :disabled="!formValido" @click="adicionarUsuario" color="primary"
           >Criar</v-btn
         >
@@ -128,7 +146,12 @@ export default {
         (v) =>
           (v && v.length >= 8) || "Senha precisa ter ao menos 8 caracteres",
       ],
-      regrasTipo: [(v) => !!v || "Tipo de usuário precisa ser preenchido"],
+      regrasTipo: [(v) => !!v || "Tipo de usuário precisa ser preenchido",
+      ],
+      regrasEndereco: [(v) => !!v || "Endereço do usuário precisa ser preenchido"
+      ],
+      regrasTelefone: [(v) => !!v || "Telefone do usuário precisa ser preenchido"
+      ],
     };
   },
   methods: {
@@ -143,6 +166,8 @@ export default {
         email: this.email,
         senha: this.senha,
         tipo: this.tipo,
+        endereco: this.endereco,
+        telefone: this.telefone,
       };
       UsuarioService.signup(dados)
         .then((response) => {
